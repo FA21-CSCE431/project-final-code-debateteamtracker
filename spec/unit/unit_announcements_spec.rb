@@ -1,4 +1,4 @@
-# location: spec/unit/unit_announcemnts.rb
+# location: spec/unit/unit_announcemnts_spec.rb
 require 'rails_helper'
 
 RSpec.describe Announcement, type: :model do
