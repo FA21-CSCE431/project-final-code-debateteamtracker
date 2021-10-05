@@ -1,4 +1,4 @@
-# location: spec/feature/integration_announcements.rb
+# location: spec/feature/integration_announcements_spec.rb
 require 'rails_helper'
 
 RSpec.describe 'Writing an announcement', type: :feature do
