@@ -1,3 +1,181 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+// Place all the styles related to the Books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@mixin respond($breakpoint) {
+	$breakpointEM: ($breakpoint / 16) *1em;
+	@if $breakpointEM > 2000 {
+		@media (max-width: $breakpointEM) {
+			@content;
+		}
+	} @else {
+		@media (max-width: $breakpointEM) {
+			@content;
+		}
+	}
+}
+
+/*Included classes*/
+    /*wrapper, navigation, landing_s1, landing_s2, landing_s3, flex-box, flex2, flex3, flex4, footer, button1, button2*/
+
+/*initalizing*/ 
+
+*{
+	padding: 0em;
+	margin: 0em;
+}
+
+body{
+    margin: 0em;
+    font-family: "Roboto", san-serif !important;
+}
+
+    /* Variables */
+    $color-maroon_dark: #500000;
+    $color-maroon_light: #732F2F;
+    $color-off_white: #00FF00;
+    $color-accent: #0000FF;
+    
+
+    /*Typography*/
+.header-font{
+    font-family: "Roboto", san-serif;
+    font-size: 126px;
+    font-style: normal;
+    font-weight: 700;
+    padding-top: 40px;
+    /*text-align: center;*/
+    color: #F4F4F4;
+
+    @include respond(1000){
+        font-size: 80px;
+    }
+
+    @include respond(800){
+        font-size: 60px;
+    }
+
+    @include respond(600){
+        font-size: 40px;
+        padding-bottom: 40px;
+    }
+
+    @include respond(400){
+        font-size: 30px;
+    }
+}
+
+.subtitle{
+    /*font-family: "Roboto Condensed";*/
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18.894px;
+    line-height: 15px;
+    padding-bottom: 40px;
+    color: #F4F4F4;
+
+    @include respond(800){
+        font-size: 16px;
+    }
+
+    @include respond(600){
+        display: none;
+    }
+}
+    
+    /*Structures*/
+.flex-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.sections{
+    padding: 10px 0;
+}
+
+.flex2 > div{
+    width: 45%;
+    min-width: 300px;
+    padding: 10px;
+
+    @include respond(960){
+        width: 60%;
+        margin: 10px auto;
+    }
+}
+
+.flex3 > div{
+    width: 25%;
+    min-width: 280px;
+    padding: 10px;
+
+    @include respond(970){
+        width: 60%;
+        min-width: 300px;
+        margin: 10px auto;
+    }
+}
+
+.max-width{
+    margin: 0px 10px;
+}
+
+.max-width-body{
+    max-width: 1350px;
+    padding: 0px 10px;
+    margin: 0 auto;
+}
+
+.flex4 > div{
+    width: 25%;
+}
+
+/*sections*/
+    /*landing.s1*/
+.landing_s1{
+    background-color: blue;
+    background-color: #500000;
+
+    .button1, .button2{
+        color: #F4F4F4;
+        /*display: inline;*/
+        padding: 2px 20px;
+        text-align: right;
+        font-size: 12px; 
+
+        @include respond(600){
+            display: none;
+        }
+    }
+
+    .button2{
+        margin-bottom: 40px;
+    }
+
+    .flex-box_header{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+}
+
+.landing_s2{
+    background-color: #F4F4F4;
+    padding: 20px 10px;
+}
+
+.landing_s3{
+    background-color: white;
+    padding: 20px 10px;
+}
+
+.footer{
+    background-color: #F4F4F4;
+    padding: 4px;
+}
