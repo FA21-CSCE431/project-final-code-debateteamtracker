@@ -1,7 +1,7 @@
 # location: spec/unit/unit_announcemnts_spec.rb
 require 'rails_helper'
 
-RSpec.describe Book, type: :model do
+RSpec.describe Announcement, type: :model do
   subject do
     described_class.new(title: 'Meeting Tommorow', description:'details', date: '2012-12-12', author: 'president')
   end
@@ -10,19 +10,19 @@ RSpec.describe Book, type: :model do
     expect(subject).to be_valid
   end
 
-  it 'is not valid without a name' do
+  it 'is not valid without a title' do
     subject.title = nil
     expect(subject).not_to be_valid
   end
-  it 'is not valid without a name' do
+  it 'is not valid without a description' do
     subject.description = nil
     expect(subject).not_to be_valid
   end
-  it 'is not valid without a name' do
+  it 'is not valid without a date' do
     subject.date = nil
     expect(subject).not_to be_valid
   end
-  it 'is not valid without a name' do
+  it 'is not valid without a author' do
     subject.author = nil
     expect(subject).not_to be_valid
   end

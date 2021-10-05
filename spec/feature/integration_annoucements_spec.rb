@@ -7,8 +7,8 @@ RSpec.describe 'Writing an announcement', type: :feature do
     fill_in 'Title', with: 'Meeting Tomorrow!'
     fill_in 'Description', with: 'These are the details'
     fill_in 'Date', with: '12/12/2012'
-    fill_in 'Author', with: 'president' 
-    click_on 'New Announcement'
+    fill_in 'Author', with: 'president'
+    click_on 'Create Announcement'
     visit announcements_path
     expect(page).to have_content('Meeting Tomorrow!')
     expect(page).to have_content('These are the details')

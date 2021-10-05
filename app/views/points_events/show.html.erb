@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @points_event.name %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @points_event.value %>
+</p>
+
+<%= link_to 'Edit', edit_points_event_path(@points_event) %> |
+<%= link_to 'Back', points_events_path %>

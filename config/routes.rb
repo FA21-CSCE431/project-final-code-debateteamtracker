@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :points_events
   resources :announcements
   get 'pages/leaderboard'
   get 'announcements/announcements'
