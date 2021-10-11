@@ -1,4 +1,5 @@
 class PointsEventsController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_points_event, only: %i[ show edit update destroy ]
 
   # GET /points_events or /points_events.json
