@@ -21,6 +21,7 @@
     <%= link_to "Home", root_path %>
     <%= link_to "Leaderboard", pages_leaderboard_path %>
     <%= link_to "Announcements", announcements_path %>
+    <%= link_to "Sign Out", destroy_admin_session_path %>
     <% if flash.any? %>
       <% flash.each do |key, value| -%>
         <section class="flash flash__<%= key %>"><%= value.html_safe %></section>
