@@ -1,6 +1,11 @@
 class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: %i[ show edit update destroy ]
   before_action :authenticate_admin!
+  before_action :authenticate_mem
+
+  def authenticate_mem
+    redirect_to '/', alert: 'Not authorized.' unless Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"])
+  end
   # GET /announcements or /announcements.json
   def index
     @announcements = Announcement.all
