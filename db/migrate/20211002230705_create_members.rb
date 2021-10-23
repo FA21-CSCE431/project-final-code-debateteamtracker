@@ -4,6 +4,7 @@ class CreateMembers < ActiveRecord::Migration[6.1]
       t.string :email
       t.string :name
       t.integer :points
+      t.integer :priority
 
       t.timestamps
     end

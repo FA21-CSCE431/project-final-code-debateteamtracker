@@ -2,7 +2,11 @@ class PagesController < ApplicationController
   def index
   end
 
+  def show
+  end
+
   def leaderboard
-    @members = Member.all.order(points: :desc) # Shift to limit 10
+    # Show regular users and limit total to top 10
+    @members = Member.where(priority: 1).order(points: :desc).limit(10)
   end
 end
