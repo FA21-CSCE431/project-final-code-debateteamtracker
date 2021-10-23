@@ -4,6 +4,12 @@ Rails.application.routes.draw do
     get 'admins/sign_in', to: 'admins/sessions#new', as: :new_admin_session
     get 'admins/sign_out', to: 'admins/sessions#destroy', as: :destroy_admin_session
   end
+
+  resources :events do
+    member do
+      get :delete
+    end
+  end
   resources :points_events
   get 'pages/leaderboard'
   resources :announcements

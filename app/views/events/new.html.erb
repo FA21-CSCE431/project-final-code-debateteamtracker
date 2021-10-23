@@ -1,0 +1,12 @@
+<%= link_to("<< Back to List", events_path, :class => 'back-link') %>
+
+<div class="events new">
+  <h2>Create event</h2>
+
+  <%= form_for(@event, :url => events_path, :method => 'post') do |f| %>
+  <%=render(:partial => 'form', :locals=> {:f => f}) %>
+
+  <div class="form-buttons"><%= f.submit("Create event") %></div>
+
+  <% end %>
+</div>

@@ -1,0 +1,23 @@
+<%= error_messages_for(f.object) %>
+<table summary="event form fields">
+  <tr>
+    <th>Name</th>
+    <td><%= f.text_field(:name) %></td>
+  </tr>
+  <tr>
+    <th>Location</th>
+    <td><%= f.text_field(:location) %></td>
+  </tr>
+  <tr>
+    <th>Date</th>
+    <td><%= f.date_field(:date) %></td>
+  </tr>
+  <tr>
+    <th>Time</th>
+    <td><%= f.time_field(:time) %></td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td><%= f.text_field(:description) %></td>
+  </tr>
+</table>
