@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <link rel="stylesheet" href="email.scss">
+  </head>
+  <body>
+    <h2> <%= @announcement.title %></h2>
+    <div class = "single_spaced">
+      <p><%= @announcement.description %></p>
+      <p><%= @announcement.author %></p>
+      <p>Date: <%= @announcement.date %></p>
+    </div>
+
+    <h4 class="single_spaced">Texas A&M Speech and Debate </h4>
+    <p >Collegiate Speech and Debate</p>
+
+    <p><a href="https://linktr.ee/tamuspeechdebate"> Follow us on social Media!</a></p>
+    <p> email_image_tag("DebateLogo.png") </p>
+
+  </body>
+</html> 
