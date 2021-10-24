@@ -1,4 +1,4 @@
-# location: spec/unit/unit_announcemnts.rb
+# location: spec/unit/unit_announcements.rb
 require 'rails_helper'
 
 RSpec.describe PointsEvent, type: :model do
