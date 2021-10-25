@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :members
+  resources :groups
   devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }
   devise_scope :admin do
     get 'admins/sign_in', to: 'admins/sessions#new', as: :new_admin_session
