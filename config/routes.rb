@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   end
   resources :points_events
   get 'pages/leaderboard'
+  get 'profile/index'
+  get 'profile/user'
+  get 'admin_dashboard/overview'
   resources :announcements
   get 'announcements/announcements'
   root to: 'pages#index'
