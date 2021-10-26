@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'before save' do  # (almost) plain English
+    it 'must have name' do   #
+      event = Event.new
+      expect { event.save }.to raise_error(ActiveRecord::RecordInvalid)  # test code
+    end
+  end
 end
