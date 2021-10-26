@@ -6,8 +6,7 @@ class MembersController < ApplicationController
   def authenticate_permission
     redirect_to '/', alert: 'Not authorized. This email does not have admin permissions' unless Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"])
   end
-
-
+  
   # GET /members or /members.json
   def index
     @members = Member.all

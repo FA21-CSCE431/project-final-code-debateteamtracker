@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Admin Overview</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Page</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= link_to 'Member Create', members_path %></td>
+        <td>Add and edit Debate Team Members from this page</td>
+      </tr>
+      <tr>
+        <td><%= link_to 'Announcement Create', announcements_path %></td>
+        <td>Create announcements to be sent through email from this page</td>
+      </tr>
+      <tr>
+        <td><%= link_to 'Points Categories', points_events_path %></td>
+        <td>Create new points categories and increase member points from this page</td>
+      </tr>
+      <tr>
+        <td><%= link_to 'Calendar Events', events_path %></td>
+        <td>Edit Calendar events from this page</td>
+      </tr>
+      <tr>
+        <td><%= link_to 'Mailing Groups', groups_path %></td>
+        <td>Edit mailing groups for different annoucnements</td>
+      </tr>
+  </tbody>
+</table>
