@@ -2,7 +2,7 @@ class GroupMailMailer < ApplicationMailer
     def email_layout
         @announcement = params[:announcement]
 
-        mail(to: 'diego_servin101@tamu.edu', subject: @announcement.title)
+        mail(to: "dservin101@gmail.com", subject: @announcement.title)
     end
 
     def email_image_tag(image, **options)

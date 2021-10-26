@@ -33,7 +33,7 @@
   <%= fields_for(@group_member_join) do |ab| %>
     <div class="field">
       <%= ab.label "All Groups" %>
-      <%= collection_select(:groups, :id, @all_groups,:id, :group_id,{} ) %>
+      <%= collection_select(:groups, :member_id, @all_groups,:id, :group_id,{} ) %>
     </div>
   <% end %>
   <div class="actions">

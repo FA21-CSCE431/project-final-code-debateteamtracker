@@ -30,6 +30,7 @@ class AnnouncementsController < ApplicationController
     respond_to do |format|
       if @announcement.save
         GroupMailMailer.with(announcement: @announcement).email_layout.deliver_later
+        
         format.html { redirect_to @announcement, notice: "Announcement was successfully created." }
         format.json { render :show, status: :created, location: @announcement }
       else

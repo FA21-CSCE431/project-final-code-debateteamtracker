@@ -21,13 +21,15 @@
     <%= form.text_field :email %>
   </div>
 
+
   <%= fields_for(@group_member_join) do |ab| %>
     <div class="field">
       <%= ab.label "All Members" %><br/>
       <%= collection_select(:members, :id, @all_members, :id, :name, {},{:multiple => true})%>
 
-    </div>
+    
   <% end %>
+
 
 
   <div class="actions">
