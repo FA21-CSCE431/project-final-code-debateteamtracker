@@ -13,7 +13,10 @@ class AnnouncementsController < ApplicationController
 
   # GET /announcements/new
   def new
+    
     @announcement = Announcement.new
+    @members = Member.all
+    @all_groups = MemberGroup.all
   end
 
   # GET /announcements/1/edit
@@ -68,6 +71,6 @@ class AnnouncementsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def announcement_params
-      params.require(:announcement).permit(:title, :description, :date, :author)
+      params.require(:announcement).permit(:title, :description, :date, :author, member_ids: [])
     end
 end

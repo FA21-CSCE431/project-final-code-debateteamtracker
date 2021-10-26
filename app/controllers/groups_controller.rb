@@ -4,7 +4,6 @@ class GroupsController < ApplicationController
   # GET /groups or /groups.json
   def index
     @groups = Group.all
-    @members = Member.all
   end
 
   # GET /groups/1 or /groups/1.json
@@ -15,19 +14,23 @@ class GroupsController < ApplicationController
   # GET /groups/new
   def new
     @group = Group.new
-    @members = Member.all
+    @all_members = Member.all
+    @group_member_join = @group.member_groups.build
   end
 
   # GET /groups/1/edit
   def edit
-    @members = Member.all
+    
   end
 
   # POST /groups or /groups.json
   def create
     @group = Group.new(group_params)
-    @members = Member.all
-
+    params[:members][:id].each do |member|
+      if !member.empty?
+        @group.member_groups.build(:member_id =>member)
+      end
+    end
     respond_to do |format|
       if @group.save
         format.html { redirect_to @group, notice: "Group was successfully created." }
