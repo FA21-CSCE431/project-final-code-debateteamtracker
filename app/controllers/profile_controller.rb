@@ -1,5 +1,4 @@
 class ProfileController < ApplicationController
-    before_action :authenticate_admin!
     before_action :authenticate_permission
 
     def authenticate_permission
