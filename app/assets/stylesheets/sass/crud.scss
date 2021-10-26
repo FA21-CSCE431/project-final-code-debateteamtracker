@@ -1,0 +1,137 @@
+
+@mixin respond($breakpoint) {
+	$breakpointEM: ($breakpoint / 16) *1em;
+	@if $breakpointEM > 2000 {
+		@media (max-width: $breakpointEM) {
+			@content;
+		}
+	} @else {
+		@media (max-width: $breakpointEM) {
+			@content;
+		}
+	}
+}
+
+/*Included classes*/
+    /*wrapper, navigation, landing_s1, landing_s2, landing_s3, flex-box, flex2, flex3, flex4, footer, button1, button2*/
+
+/*initalizing*/
+table {
+  width: 100%;
+  border: 1px solid #000;
+	border-collapse: collapse;
+	margin-bottom: 40px;
+	font-size: 18px;
+}
+
+th, td {
+	border: 1px solid #000;
+	padding: 5px;
+}
+
+thead, tbody {
+	width: 100%;
+}
+
+.logo {
+	height: 60px;
+	width: 60px;
+}
+
+.content-box {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 80%;
+}
+
+.crud-header {
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 30px;
+}
+
+.crud-body {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 900px;
+}
+
+.members-table {
+}
+
+.leaderboard {
+	width: 100%;
+	.name {
+			width: 70%;
+	}
+}
+
+.field {
+	width: 80px;
+	padding-bottom: 20px;
+	display: flex;
+	flex-direction: row;
+	padding-right: 20px;
+}
+
+.actions {
+	padding-top: 20px;
+}
+
+.crud-flex {
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	flex-direction: row;
+	font-size: 18px;
+	height: 100%;
+
+	.half {
+		width: 50%;
+	}
+
+	.full {
+		width: 100%;
+	}
+
+	.crud-text {
+		flex: 1;
+	}
+
+	.crud-input {
+		flex: 3;
+		font-size: 18px;
+	}
+}
+
+.crud-submit {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.submit-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.submit-button:hover {
+	cursor: pointer;
+}
+
+.back-button {
+	background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+	float: left;
+}

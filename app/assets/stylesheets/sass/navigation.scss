@@ -3,6 +3,8 @@
 .navbar{
     display: flex;
     justify-content: space-between;
+    background-color: #2b2c4b;
+    margin-bottom: 20px;
 }
 
 .left-navbar{
@@ -10,6 +12,7 @@
     width: 18%;
     min-width: 200px;
     display: flex;
+    height: 60px;
     justify-content: space-between;
     align-content: center;
 
@@ -25,27 +28,36 @@
     padding-right: 10px;
     min-width: 200px;
     display: flex;
+    height: 60px;
     justify-content: space-between;
     align-content: center;
 
-    .link{
-        padding: 20px 20px;
+    .link-box{
+        padding: 0px 20px;
+        height: 50px;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        a{
-            color: #aaa;
-            font-weight: 600;
-        }
     }
-    
-    .link:hover{
+
+    .link-box:hover{
         cursor: pointer;
     }
-    
+
+    .link {
+      display: flex;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
     a{
         text-decoration: none;
         color: #500000;
     }
 }
 
+.google-sign-in {
+  display: flex;
+  margin-top: 5px;
+  margin-right: 20px;
+  height: 40;
+
+}

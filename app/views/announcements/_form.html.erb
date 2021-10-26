@@ -11,32 +11,39 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_field :date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field :author %>
-  </div>
-  <%= fields_for(@group_member_join) do |ab| %>
-    <div class="field">
-      <%= ab.label "All Groups" %>
-      <%= collection_select(:groups, :member_id, @all_groups,:id, :group_id,{} ) %>
+  <div class="crud-flex">
+    <div class="field" style="flex: 1">
+      <%= form.label :title, class: "crud-text" %>
+      <%= form.text_field :title, class: "crud-input" %>
     </div>
-  <% end %>
-  <div class="actions">
-    <%= form.submit %>
   </div>
+  <div class="crud-flex">
+    <div class="field" style="flex: 1">
+      <%= form.label :description, class: "crud-text" %>
+      <%= form.text_area :description, rows: 10, class: "crud-input" %>
+    </div>
+  </div> <!-- crud flex -->
+  <div class="crud-flex">
+    <div class="field" style="flex: 1">
+      <%= form.label :date, class: "crud-text" %>
+      <%= form.date_field :date, class: "crud-input" %>
+    </div>
+  </div> <!-- crud-flex -->
+  <div class="crud-flex">
+    <div class="field" style="flex: 1">
+      <%= form.label :author, class: "crud-text" %>
+      <%= form.text_field :author, class: "crud-input" %>
+    </div>
+    <%= fields_for(@group_member_join) do |ab| %>
+      <div class="field">
+        <%= ab.label "All Groups" %>
+        <%= collection_select(:groups, :member_id, @all_groups,:id, :group_id,{} ) %>
+      </div>
+    <% end %>
+  </div> <!-- crud-flex -->
+  <div class="crud-flex">
+    <div class="actions crud-submit">
+      <%= form.submit class: "submit-button" %>
+    </div>
+  </div> <!-- crud flex -->
 <% end %>

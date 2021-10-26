@@ -1,18 +1,22 @@
-<h1>Leaderboard</h1>
+<div class="content-box">
+  <div class="crud-body">
+    <h1 class="crud-header">Leaderboard</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Points</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @members.each do |member| %>
+    <table class="leaderboard">
+        <thead>
             <tr>
-                <td><%= member.name %></td>
-                <td><%= member.points %></td>
+                <th class="name">Name</th>
+                <th>Points</th>
             </tr>
-        <% end %>
-    <tbody>
-</table>
+        </thead>
+        <tbody>
+            <% @members.each do |member| %>
+                <tr>
+                    <td class="name"><%= member.name %></td>
+                    <td><%= member.points %></td>
+                </tr>
+            <% end %>
+        <tbody>
+    </table>
+  </div>
+</div>

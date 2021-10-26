@@ -1,35 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Members</h1>
+<div class="content-box">
+  <div class="crud-body">
+    <h1 class="crud-header">Members</h1>
+    <table class="members-table">
+      <thead>
+        <tr>
+          <th class="email">Email</th>
+          <th class="name">Name</th>
+          <th class="points">Points</th>
+          <th class="priority">Priority</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Name</th>
-      <th>Points</th>
-      <th>Priority</th>
-      <th>Actions</th>
+      <tbody>
+        <% @members.each do |member| %>
+          <tr>
+            <td class="email"><%= member.email %></td>
+            <td class="name"><%= member.name %></td>
+            <td class="points"><%= member.points %></td>
+            <td class="priority"><%= member.priority %></td>
+            <td><%= button_to 'Show', member %></td>
+            <td><%= button_to 'Edit', edit_member_path(member) %></td>
+            <td><%= button_to 'Remove', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @members.each do |member| %>
-      <tr>
-        <td><%= member.email %></td>
-        <td><%= member.name %></td>
-        <td><%= member.points %></td>
-        <td><%= member.priority %></td>
-        <td><%= link_to 'Show', member %></td>
-        <td><%= link_to 'Edit', edit_member_path(member) %></td>
-        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Member', new_member_path %>
+    <%= link_to 'New Member', new_member_path, class: "submit-button" %>
+  </div> <!-- crud-body -->
+  <br>
+</div> <!-- content-box -->

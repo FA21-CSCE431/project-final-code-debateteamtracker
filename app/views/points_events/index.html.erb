@@ -1,30 +1,34 @@
 <p id="notice"><%= notice %></p>
 
 <%= link_to "Sign Out", destroy_admin_session_path %>
-<h1>Points Events</h1>
+<div class="content-box">
+  <div class="crud-body">
+    <h1 class="crud-header">Points Events</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Value</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Value</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @points_events.each do |points_event| %>
-      <tr>
-        <td><%= points_event.name %></td>
-        <td><%= points_event.value %></td>
-        <td><%= link_to 'Show', points_event %></td>
-        <td><%= link_to 'Edit', edit_points_event_path(points_event) %></td>
-        <td><%= link_to 'Delete', points_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Points Event', new_points_event_path %>
+      <tbody>
+        <% @points_events.each do |points_event| %>
+          <tr>
+            <td><%= points_event.name %></td>
+            <td><%= points_event.value %></td>
+            <td><%= link_to 'Show', points_event %></td>
+            <td><%= link_to 'Edit', edit_points_event_path(points_event) %></td>
+            <td><%= link_to 'Delete', points_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div>
+      <%= link_to 'New Points Event', new_points_event_path, class: "submit-button" %>
+    </div>
+  </div> <!-- crud-body -->
+  <br>
+</div> <!-- content-box -->
