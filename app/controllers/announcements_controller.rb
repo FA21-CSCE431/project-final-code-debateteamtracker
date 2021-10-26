@@ -13,7 +13,10 @@ class AnnouncementsController < ApplicationController
 
   # GET /announcements/new
   def new
+    
     @announcement = Announcement.new
+    @members = Member.all
+    @all_groups = MemberGroup.all
   end
 
   # GET /announcements/1/edit
@@ -26,11 +29,15 @@ class AnnouncementsController < ApplicationController
 
     respond_to do |format|
       if @announcement.save
+        GroupMailMailer.with(announcement: @announcement).email_layout.deliver_later
+        
         format.html { redirect_to @announcement, notice: "Announcement was successfully created." }
         format.json { render :show, status: :created, location: @announcement }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @announcement.errors, status: :unprocessable_entity }
+        flash.now[:error] = "Your Announcement form had some errors. Please check the form and resubmit."
+        render :new
       end
     end
   end
@@ -65,6 +72,6 @@ class AnnouncementsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def announcement_params
-      params.require(:announcement).permit(:title, :description, :date, :author)
+      params.require(:announcement).permit(:title, :description, :date, :author, member_ids: [])
     end
 end
