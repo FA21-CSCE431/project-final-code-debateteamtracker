@@ -29,5 +29,21 @@ RSpec.describe Member, type: :model do
     subject.priority = nil
     expect(subject).not_to be_valid
   end
+
+  it 'is not valid if priority is negative number' do
+    subject.priority = -1
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid if priority is greater than 3' do
+    subject.priority = 4
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid if priority is a negative number' do
+    subject.priority = -1
+    expect(subject).not_to be_valid
+  end
+
   
 end
