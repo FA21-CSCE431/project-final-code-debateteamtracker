@@ -10,13 +10,11 @@
     width: 18%;
     min-width: 200px;
     display: flex;
-    height: 40px;
     justify-content: space-between;
     align-content: center;
 
     .child_logo{
-        padding: 0px 20px;
-        height: 40px;
+        padding: 20px 20px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -25,20 +23,20 @@
 
 .right-navbar{
     padding-right: 10px;
-    width: 18%;
     min-width: 200px;
     display: flex;
-    height: 40px;
     justify-content: space-between;
     align-content: center;
 
     .link{
-        padding: 0px 20px;
-        height: 40px;
-        //position: relative;
+        padding: 20px 20px;
         display: flex;
         justify-content: center;
         align-items: center;
+        a{
+            color: #aaa;
+            font-weight: 600;
+        }
     }
     
     .link:hover{
