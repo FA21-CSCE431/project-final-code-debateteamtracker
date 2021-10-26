@@ -4,29 +4,33 @@
 
   <%= link_to("Add New Event", new_event_path, :class => 'action new') %>
 
-  <table class="listing" summary="Event list">
-    <tr class="header">
-      <th>Event</th>
-      <th>Location</th>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Description</th>
-    </tr>
-    <% @events.each do |event| %>
-    <tr>
-      <td><%= event.name %></td>
-      <td><%= event.location %></td>
-      <td><%= event.date.strftime("%B, %d, %Y") %></td>
-      <td><%= event.time %></td>
-      <td class="center"><%= event.description %></td>
-      <td class="actions">
-        <%= link_to("Show", event_path(event), :class => 'action show') %> <%=
-        link_to("Edit", edit_event_path(event), :class => 'action edit') %> <%=
-        link_to("Delete", delete_event_path(event), :class => 'action delete')
-        %>
-      </td>
-    </tr>
-    <% end %>
-  </table>
-  <%= month_calendar do |date| %> <%= date %><% end %>
-</div>
+  <div class="crud-body">
+    <h1 class="crud-header">Events</h1>
+    <table class="listing" summary="Event list">
+      <tr class="header">
+        <th>Event</th>
+        <th>Location</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Description</th>
+      </tr>
+      <% @events.each do |event| %>
+      <tr>
+        <td><%= event.name %></td>
+        <td><%= event.location %></td>
+        <td><%= event.date.strftime("%B, %d, %Y") %></td>
+        <td><%= event.time %></td>
+        <td class="center"><%= event.description %></td>
+        <td class="actions">
+          <%= button_to("Show", event_path(event), :class => 'action show') %> <%=
+          button_to("Edit", edit_event_path(event), :class => 'action edit') %> <%=
+          button_to("Delete", delete_event_path(event), :class => 'action delete')
+          %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <%= month_calendar do |date| %> <%= date %><% end %>
+  </div> <!-- crud-body -->
+  <br>
+</div> <!-- content-box -->

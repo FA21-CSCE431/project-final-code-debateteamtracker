@@ -1,5 +1,8 @@
-<h1>New Member</h1>
+<div class="content-box">
+  <%= link_to 'Back', members_path, class: "back-button" %>
 
-<%= render 'form', member: @member %>
-
-<%= link_to 'Back', members_path %>
+  <div class="crud-body">
+    <h1 class="crud-header">New member</h1>
+    <%= render 'form', member: @member %>
+  </div>
+</div>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DebateTeamTracker</title>
+    <%= favicon_link_tag asset_path('logo.png') %>
+    <title>TAMU Speech & Debate</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <%= csrf_meta_tags %> <%= csp_meta_tag %>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,20 +30,33 @@
   <body>
     <div class="navbar">
       <div class="left-navbar">
-        <div class="child_logo"><p>Logo Here</p></div>
-      </div>
-      <!-- left-navbar -->
-
+        <div class="child_logo"><%= image_tag("logo.png", :size => "60x60") %></div>
+      </div> <!-- left-navbar -->
       <div class="right-navbar">
-        <div class="link"><%= link_to "Home", root_path %></div>
-        <div class="link">
-          <%= link_to "Leaderboard", pages_leaderboard_path %>
+        <div class="link-box">
+          <%= link_to "Home", root_path, class: "link" %>
         </div>
-        <div class="link"><%= link_to "Profile", profile_index_path %></div>
-        <div class="link"><%= link_to "Sign in with Google",
-      admin_google_oauth2_omniauth_authorize_path, method: :post %></div>
+        <div class="link-box">
+          <%= link_to "Leaderboard", pages_leaderboard_path, class: "link" %>
+        </div>
+        <div class="link-box">
+          <%= link_to "Announcements", announcements_path, class: "link" %>
+        </div>
+        <div class="link-box">
+          <%= link_to "Calendar", events_path, class: "link" %>
+        </div>
+        <div class="link-box">
+          <%= link_to "Member Create", members_path, class: "link" %>
+        </div>
+        <div class="link-box">
+          <%= link_to "Profile", profile_index_path, class: "link" %>
+        </div>
+      </div> <!-- navbar -->
+      <div class="link-box">
+        <%= link_to image_tag("google_signin.png"),
+        admin_google_oauth2_omniauth_authorize_path,
+        class: "link google-sign-in", method: :post  %>
       </div>
-      <!-- navbar -->
     </div>
     <% if flash.any? %> <% flash.each do |key, value| -%>
     <section class="flash flash__<%= key %>"><%= value.html_safe %></section>

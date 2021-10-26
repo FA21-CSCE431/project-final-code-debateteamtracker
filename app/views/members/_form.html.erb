@@ -11,32 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
+  <div class="crud-flex">
+    <div class="field" style="flex: 1">
+      <%= form.label :email, class: "crud-text" %>
+      <%= form.text_field :email, class: "crud-input" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+    <div class="field" style="flex: 1">
+      <%= form.label :name, class: "crud-text" %>
+      <%= form.text_field :name, class: "crud-input" %>
+    </div>
+  </div> <!-- crud flex -->
 
-  <div class="field">
-    <%= form.label :points %>
-    <%= form.number_field :points %>
-  </div>
+  <div class="crud-flex">
+    <div class="field" style="flex: 1">
+      <%= form.label :points, class: "crud-text" %>
+      <%= form.number_field :points, class: "crud-input" %>
+    </div>
 
-  <div class="field">
-    <%= form.radio_button :priority, 1 %> 
-    <%= form.label :priority, 'Member - 1', :value => 1 %>
-    <%= form.radio_button :priority, 2 %>
-    <%= form.label :priority, 'Secondary Admin - 2', :value => 2 %>
-    <%= form.radio_button :priority, 3 %>
-    <%= form.label :priority, 'Primary Admin - 3', :value => 3 %>
-
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="field" style="flex: 1">
+      <%= form.radio_button :priority, 1 %>
+      <%= form.label :priority, 'Member - 1', :value => 1 %>
+      <%= form.radio_button :priority, 2 %>
+      <%= form.label :priority, 'Secondary Admin - 2', :value => 2 %>
+      <%= form.radio_button :priority, 3 %>
+      <%= form.label :priority, 'Primary Admin - 3', :value => 3 %>
+    </div>
+  </div> <!-- crud-flex -->
+  
+  <div class="crud-flex">
+    <div class="actions crud-submit">
+      <%= form.submit class: "submit-button" %>
+    </div>
+  </div> <!-- crud flex -->
 <% end %>
