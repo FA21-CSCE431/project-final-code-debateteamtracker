@@ -1,4 +1,5 @@
 class Group < ApplicationRecord
     has_many :members
-    #def 
+    validates :email, presence: true
+    validates :title, presence: true
 end
