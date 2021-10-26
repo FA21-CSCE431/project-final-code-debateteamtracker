@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_204555) do
     t.string "email"
     t.string "name"
     t.integer "points"
+    t.integer "priority"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
