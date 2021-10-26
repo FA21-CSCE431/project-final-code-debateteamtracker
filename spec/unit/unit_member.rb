@@ -44,5 +44,6 @@ RSpec.describe Member, type: :model do
     subject.priority = -1
     expect(subject).not_to be_valid
   end
+
   
 end
