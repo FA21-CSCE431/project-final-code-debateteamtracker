@@ -1,6 +1,6 @@
 class PointsEventsController < ApplicationController
-  before_action :authenticate_admin!
   before_action :set_points_event, only: %i[ show edit update destroy ]
+  before_action :authenticate_admin!
   before_action :authenticate_permission
 
   def authenticate_permission

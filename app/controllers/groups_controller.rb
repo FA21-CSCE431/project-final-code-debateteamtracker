@@ -1,5 +1,11 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: %i[ show edit update destroy ]
+  before_action :authenticate_admin!
+  before_action :set_groups, only: %i[ show edit update destroy ]
+  before_action :authenticate_permission
+
+  def authenticate_permission
+    redirect_to '/', alert: 'Not authorized. This email does not have admin permissions' unless Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"])
+  end
 
   # GET /groups or /groups.json
   def index
