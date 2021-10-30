@@ -3,8 +3,8 @@
 <div class="events edit">
   <h2>Update event</h2>
 
-  <%= form_for(@event) do |f| %> <%=render(:partial => 'form', :locals=> {:f
-  =>f}) %>
+  <%= form_for(@event) do |f| %> 
+  <%=render(:partial => 'form', :locals=> {:f=>f}) %>
 
   <div class="form-buttons"><%= f.submit("Update event") %></div>
 

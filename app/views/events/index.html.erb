@@ -22,9 +22,10 @@
         <td><%= event.time %></td>
         <td class="center"><%= event.description %></td>
         <td class="actions">
-          <%= button_to("Show", event_path(event), :class => 'action show') %> <%=
-          button_to("Edit", edit_event_path(event), :class => 'action edit') %> <%=
+          <%= button_to("Show", event_path(event), :class => 'action show', method: :get) %> <%=
+          button_to("Edit", edit_event_path(event), :class => 'action edit', method: :get) %> <%=
           button_to("Delete", delete_event_path(event), :class => 'action delete')
+          
           %>
         </td>
       </tr>

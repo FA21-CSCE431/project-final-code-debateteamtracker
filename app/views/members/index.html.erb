@@ -21,8 +21,8 @@
             <td class="name"><%= member.name %></td>
             <td class="points"><%= member.points %></td>
             <td class="priority"><%= member.priority %></td>
-            <td><%= button_to 'Show', member %></td>
-            <td><%= button_to 'Edit', edit_member_path(member) %></td>
+            <td><%= button_to 'Show', member, method: :get %></td>
+            <td><%= button_to 'Edit', edit_member_path(member), method: :get %></td>
             <td><%= button_to 'Remove', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
