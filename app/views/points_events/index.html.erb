@@ -19,9 +19,9 @@
           <tr>
             <td><%= points_event.name %></td>
             <td><%= points_event.value %></td>
-            <td><%= link_to 'Show', points_event %></td>
-            <td><%= link_to 'Edit', edit_points_event_path(points_event) %></td>
-            <td><%= link_to 'Delete', points_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= button_to 'Show', points_event, method: :get %></td>
+            <td><%= button_to 'Edit', edit_points_event_path(points_event), method: :get %></td>
+            <td><%= button_to 'Delete', points_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>
