@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all',
     'data-turbolinks-track': 'reload' %> <%= javascript_pack_tag 'application',
     'data-turbolinks-track': 'reload' %>
@@ -42,7 +43,7 @@
           <%= link_to "Announcements", announcements_path %>
         </div>
         <div class="link"><%= link_to "Calendar", events_path %></div>
-        <div class="link"><%= link_to "Members", members_path %></div>
+        <div class="link "><%= link_to "Members", members_path %></div>
         <div class="link"><%= link_to "Sign in with Google",
       admin_google_oauth2_omniauth_authorize_path, method: :post %></div>
       </div>

@@ -17,6 +17,10 @@
 
 /*initalizing*/ 
 
+html{
+    scroll-behavior: smooth;
+}
+
 *{
 	padding: 0em;
 	margin: 0em;
@@ -37,15 +41,33 @@ body{
     /*Typography*/
 .header-font{
     font-family: "Roboto", san-serif;
+    //font-family: 'Lobster', cursive;
     font-size: 126px;
     font-style: normal;
+    font-weight: 500;
     font-weight: 700;
-    padding-top: 40px;
-    /*text-align: center;*/
-    color: #F4F4F4;
+    line-height: 130px;
+
+    /*border: 7.56px solid #FFFFFF;*/
+    /*text-shadow: -2px 2px 0 #ddd,
+                          1px 1px 0 #ddd,
+                         1px -1px 0 #ddd,
+                        -1px -1px 0 #ddd;*/
+
+    /*box-shadow: 0px 2.5px 3.8px #0000004D inset;*/
+
+    letter-spacing: 2px;
+    letter-spacing: 0.5px;
+    text-align: left;
+    color: #ddd;
+    //color: #111;
+    padding-left: 30px;
+
+    /*border: 7.56px solid #EBEBEB;*/
 
     @include respond(1000){
         font-size: 80px;
+        line-height: 100px;
     }
 
     @include respond(800){
@@ -61,34 +83,12 @@ body{
         font-size: 30px;
     }
 }
-
-.subtitle{
-    /*font-family: "Roboto Condensed";*/
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18.894px;
-    line-height: 15px;
-    padding-bottom: 40px;
-    color: #F4F4F4;
-
-    @include respond(800){
-        font-size: 16px;
-    }
-
-    @include respond(600){
-        display: none;
-    }
-}
     
     /*Structures*/
 .flex-box{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-}
-
-.sections{
-    padding: 10px 0;
 }
 
 .flex2 > div{
@@ -106,6 +106,24 @@ body{
     width: 25%;
     min-width: 280px;
     padding: 10px;
+    background: #100200B2;
+    border: 2px solid #F6BD0Bb0;
+    //border: 2px solid #181E42;
+
+    .item-title{
+        color: #F6BD0B;
+        margin: 10px 10px;
+        font-size: 30px;
+    }
+
+    p{
+        color: #ddd;
+        margin: 10px 10px;
+        margin-bottom: 20px;
+        line-height: 30px;
+        /*text-align: center;*/
+    }
+
 
     @include respond(970){
         width: 60%;
@@ -131,16 +149,66 @@ body{
 /*sections*/
     /*landing.s1*/
 .landing_s1{
-    padding-top: 40px;
     background-color: blue;
-    background-color: #500000;
+    background-image: url(img-1.jpg);
+    position: relative;
+    padding: 0px;
+
+    .underline{
+        /*border-bottom: 3px solid #eee;*/
+    }
+
+    .landing_s1_cover{
+        background: rgba(0,0,0,0.5);
+        width: 100%;
+        height: 100%;
+        padding-top: 40px;
+        padding: 150px 0px;
+    }
+
+    background-size: cover;
+
+    .button-flex{
+        border-top: 3px solid #eee;
+        display: flex;
+        width: 50%;
+        /*justify-content: center;*/
+        padding-left: 20px;
+        padding-top: 60px;
+        align-content: center;
+        position: absolute; 
+        bottom: 0;
+    }
 
     .button1, .button2{
+        p{
+            font-size: 20px;
+        }
+        font-weight: 600;
+        margin: 0px 10px;
         color: #F4F4F4;
-        /*display: inline;*/
-        padding: 2px 20px;
-        text-align: right;
+        padding: 10px 20px;
+        text-align: left;
         font-size: 12px; 
+        border: 3px solid #F6BD0B;
+        color: #F6BD0B;
+        transition: all .55s;
+
+        @include respond(1000){
+            p{
+                font-size: 12px;
+            }
+
+            font-weight: 600;
+            margin: 0px 4px;
+            color: #F4F4F4;
+            padding: 10px 20px;
+            text-align: left;
+            font-size: 12px; 
+            border: 3px solid #F6BD0B;
+            color: #F6BD0B;
+            transition: all .55s;
+        }
 
         @include respond(600){
             display: none;
@@ -151,17 +219,152 @@ body{
         margin-bottom: 40px;
     }
 
+    .button2:hover{
+        color: #000;
+        background-color: #F6BD0B;
+        font-weight: 700;
+    }
+
     .flex-box_header{
         width: 100%;
         display: flex;
-        justify-content: center;
-        align-content: center;
+    }
+}
+
+@keyframes bounce {
+    from {
+        //transform: translateY(5px);
+        transform:translateY(5px);
+    }
+  
+    to {
+        transform:translateY(-5px);
+        //transform: translateY(-5px) translateY(5px);
+    }
+  }
+
+.animation{
+    animation-duration: 2s;
+        animation-name: bounce;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+}
+
+.scroll-down:hover{
+    cursor: pointer;
+}
+
+.scroll-down{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: black;
+    padding: 20px 0px;
+    padding-bottom: 30px;
+    .arrow {
+        border: solid #bbb;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 3px;
+        //transform: translateY(-20px);
+        //transition: transform 2s;
+        
+    }
+    .down {
+        transform: scale(2) rotate(45deg);
     }
 }
 
 .landing_s2{
+    /*background-color: #F4F4F4;
+    padding: 20px 10px;*/
+    margin-top: 70px;
+    margin-bottom: 70px;
     background-color: #F4F4F4;
-    padding: 20px 10px;
+
+    .seventy{
+        display: flex;
+    }
+
+    .about{
+        width: 60%;
+        position: relative;
+        //padding-right: 40px;
+
+        .left-line{
+            border-bottom: 5px solid #F6BD0B;
+            width: 70%;
+            padding-top: 50px;
+        }
+        .right-line{
+            border-top: 5px solid #F6BD0B;
+            content:"";
+            width: 70%;
+            margin-left: 30%;
+            padding-bottom: 50px;
+        }
+
+        h3{
+            padding-top: 40px;
+            padding-left: 80px;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 28px;
+            letter-spacing: 0px;
+            text-align: left;
+            padding-bottom: 10px;
+        }
+        p{
+            padding-bottom: 40px;
+            padding-left: 80px;
+            /*font-family: Roboto;*/
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 28px;
+            letter-spacing: 0px;
+            text-align: left;
+            padding-right: 80px;
+        }
+    }
+
+    .about-image{
+        width: 40%;
+        background-image: url(img-2.jpg);
+        background-size: cover;
+
+    }
+
+}
+
+.currentEvents{
+    background-image: url(img-3.jpg);
+    background-size: cover;
+
+    .img-cover{
+        background: #00000066;
+        padding-bottom: 60px;
+    }
+
+    h4{
+        //font-family: Roboto Condensed;
+        font-size: 70px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150px;
+        letter-spacing: 2px;
+        text-align: left;
+        color: #eee;
+        //color: black;
+        text-align: center;
+        padding: 20px;
+/*
+        text-shadow: -2px 2px 0 #ddd,
+                          1px 1px 0 #ddd,
+                         1px -1px 0 #ddd,
+                        -1px -1px 0 #ddd;*/
+    }
 }
 
 .landing_s3{
