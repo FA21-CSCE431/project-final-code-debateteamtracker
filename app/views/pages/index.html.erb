@@ -2,34 +2,72 @@
 
   <div class="max-width">
     <div class="landing_s1 sections">
-      <div class="flex-box_header">
-        <div class="left-align">
-          <h1 class="header-font"> Welcome Page </h1>
-          <h3 class="subtitle"> Place holder Header / Description of the club </h3>
-          <!--<div class="button1"> <p> Button Here Later </p> </div>-->
-          <div class="button2"> <p> Button Here Later </p> </div>
+      <div class="landing_s1_cover">
+        <div class="flex-box_header">
+          <div class="left-align">
+            <div class="underline">
+              <h1 class="header-font"> Speech <br>& Debate </h1>
+           <!--<h3 class="subtitle"> Place holder Header / Description of the club </h3>-->
+            </div> <!-- underline -->
+            <div class="button-flex">
+              <div class="button2"> <p> Learn More </p> </div>
+              <div class="button2"> <p> About Us </p> </div>
+            </div>
+          </div>
         </div>
       </div>
     </div> <!--top Section-->
 
-      <div class="landing_s2 sections">
-      <div class="max-width-body">
-        <h2> Informational Section Here </h2>
-        <div class="flex-box flex3">
-          <div>
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-          </div>
+      <div id="stop" class="scroll-down" onclick="myFunction()">
+        <div class="animation">
+          <p><i class="arrow down"></i></p>
+        </div>
+      </div>
 
-          <div>
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+      <div class="landing_s2 sections" id="scroll_stop">
+        <div class="seventy">
+          <div class="about">
+            <div class="left-line"></div>
+            <h3> About Us </h3>
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
+            do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis  nostrud exercitation ullamco laboris 
+            nisi ut a liquip ex ea commodo consequat.
+            ullamco laboris nisi ut a liquip ex ea commodo consequat </p>
+            <div class="right-line"></div>
           </div>
-
-          <div>
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+          <div class="about-image">
+              <!--<p> place holder </p>-->
           </div>
-        </div> <!--flex-box flex3-->
-        </div> <!--max-width-body-->
+        </div>
       </div>  <!--landing.s2-->
+
+      <div class="currentEvents">
+            <div class="img-cover max-width-body">
+              <h4> Current Events </h4>
+        
+              <div class="flex-box flex3">
+                <div> 
+                  <h3 class="item-title"> Title </h3>
+                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p> 
+                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p> 
+                </div>
+
+                <div> 
+                  <h3 class="item-title"> Title </h3>
+                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p> 
+                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p> 
+                </div>
+
+                <div> 
+                  <h3 class="item-title"> Title </h3>
+                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p> 
+                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p> 
+                </div>
+              </div>
+
+            </div>
+      </div>
 
       <div class="landing_s3 sections">
       <div class="max-width-body">
@@ -57,3 +95,13 @@
 
   </div> <!--max-width-->
 </div>  <!--wrapper-->
+
+<script>
+function myFunction() {
+  var elmntToView = document.getElementById("scroll_stop");
+elmntToView.scrollIntoView(); 
+}
+
+const images = document.querySelectorAll('.lazyload');
+
+</script>
