@@ -23,10 +23,9 @@
         <td class="center"><%= event.description %></td>
         <td class="actions">
           <%= button_to("Show", event_path(event), :class => 'action show', method: :get) %> <%=
-          button_to("Edit", edit_event_path(event), :class => 'action edit', method: :get) %> <%=
-          button_to("Delete", delete_event_path(event), :class => 'action delete')
+          button_to("Edit", edit_event_path(event), :class => 'action edit', method: :get) %>
+          <%= button_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           
-          %>
         </td>
       </tr>
       <% end %>
