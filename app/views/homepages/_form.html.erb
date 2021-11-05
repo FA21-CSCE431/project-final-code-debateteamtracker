@@ -1,0 +1,67 @@
+<%= form_with(model: homepage) do |form| %>
+  <% if homepage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(homepage.errors.count, "error") %> prohibited this homepage from being saved:</h2>
+
+      <ul>
+        <% homepage.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :about %>
+    <%= form.text_field :about %>
+  </div>
+
+  <div class="field">
+    <%= form.label :aboutcontentone %>
+    <%= form.text_field :aboutcontentone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :aboutcontenttwo %>
+    <%= form.text_field :aboutcontenttwo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :emailone %>
+    <%= form.text_field :emailone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :emailtwo %>
+    <%= form.text_field :emailtwo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :emailthree %>
+    <%= form.text_field :emailthree %>
+  </div>
+
+  <div class="field">
+    <%= form.label :emailfour %>
+    <%= form.text_field :emailfour %>
+  </div>
+
+  <div class="field">
+    <%= form.label :emailfive %>
+    <%= form.text_field :emailfive %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact %>
+    <%= form.text_field :contact %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contactcontent %>
+    <%= form.text_field :contactcontent %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

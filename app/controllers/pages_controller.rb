@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   def index
+    @events = Event.order(date: :asc).limit(3)
+    @homepages = Homepage.limit(1)
   end
 
   def show

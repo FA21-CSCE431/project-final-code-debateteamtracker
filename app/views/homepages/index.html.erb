@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Homepages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>About</th>
+      <th>Aboutcontentone</th>
+      <th>Aboutcontenttwo</th>
+      <th>Emailone</th>
+      <th>Emailtwo</th>
+      <th>Emailthree</th>
+      <th>Emailfour</th>
+      <th>Emailfive</th>
+      <th>Contact</th>
+      <th>Contactcontent</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @homepages.each do |homepage| %>
+      <tr>
+        <td><%= homepage.about %></td>
+        <td><%= homepage.aboutcontentone %></td>
+        <td><%= homepage.aboutcontenttwo %></td>
+        <td><%= homepage.emailone %></td>
+        <td><%= homepage.emailtwo %></td>
+        <td><%= homepage.emailthree %></td>
+        <td><%= homepage.emailfour %></td>
+        <td><%= homepage.emailfive %></td>
+        <td><%= homepage.contact %></td>
+        <td><%= homepage.contactcontent %></td>
+        <td><%= link_to 'Show', homepage %></td>
+        <td><%= link_to 'Edit', edit_homepage_path(homepage) %></td>
+        <td><%= link_to 'Destroy', homepage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Homepage', new_homepage_path %>

@@ -1,12 +1,28 @@
 //classes: navbar, link
 
+
+@mixin respond($breakpoint) {
+	$breakpointEM: ($breakpoint / 16) *1em;
+	@if $breakpointEM > 2000 {
+		@media (max-width: $breakpointEM) {
+			@content;
+		}
+	} @else {
+		@media (max-width: $breakpointEM) {
+			@content;
+		}
+	}
+}
+
 .navbar{
+    
     display: flex;
     justify-content: space-between;
     background: #00000080;
     background: #efefef;
     background: #f4f4f4;
-    position: auto;
+    //background: #f4f4f400;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -23,7 +39,7 @@
     align-content: center;
 
     .child_logo{
-        padding: 20px 20px;
+        padding: 10px 10px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -37,7 +53,7 @@
     justify-content: space-between;
     align-content: center;
 
-    .link{
+    .link-box{
         padding: 20px 20px;
         display: flex;
         justify-content: center;
@@ -48,24 +64,23 @@
             color: #999;
             font-weight: 700;
             font-family: Roboto;
-            font-size: 13px;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 15px;
+font-size: 13px;
+font-size: 16px;
+
+@include respond(1400){
+    font-size: 14px;
+}
+
+font-style: normal;
+font-weight: 600;
+line-height: 15px;
         }
     }
-
+    
     .link-box:hover{
         cursor: pointer;
     }
-
-    .link {
-      display: flex;
-      margin-top: auto;
-      margin-bottom: auto;
-    }
-
+    
     a{
         text-decoration: none;
         color: #500000;
@@ -96,10 +111,11 @@
     }
 }
 
-.google-sign-in {
-  display: flex;
-  margin-top: 5px;
-  margin-right: 20px;
-  height: 40;
 
+.top-padding{
+	color: white;
+	height: 80px;
+	width: 100%;
+	content: "";
 }
+

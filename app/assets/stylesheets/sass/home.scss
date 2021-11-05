@@ -26,9 +26,23 @@ html{
 	margin: 0em;
 }
 
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+  }
+
+.fa-linkedin, .fa-twitter, .fa-facebook, .fa-instagram{
+    color: white;
+  }
+
 body{
     margin: 0em;
     font-family: "Roboto", san-serif !important;
+    //padding-top: 60px;
 }
 
     /* Variables */
@@ -144,6 +158,9 @@ body{
 
 .flex4 > div{
     width: 25%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 
 /*sections*/
@@ -278,18 +295,24 @@ body{
 .landing_s2{
     /*background-color: #F4F4F4;
     padding: 20px 10px;*/
-    margin-top: 70px;
-    margin-bottom: 70px;
-    background-color: #F4F4F4;
+    background-color: white;
+    
 
     .seventy{
         display: flex;
     }
 
     .about{
+        margin-top: 70px;
+        background-color: #F4F4F4;
         width: 60%;
         position: relative;
         //padding-right: 40px;
+        flex-wrap: wrap;
+
+        @include respond(1100){
+            width: 100%;
+        }
 
         .left-line{
             border-bottom: 5px solid #F6BD0B;
@@ -331,6 +354,12 @@ body{
 
     .about-image{
         width: 40%;
+        margin-top: 70px;
+
+        @include respond(1100){
+            width: 100%;
+        }
+
         background-image: url(img-2.jpg);
         background-size: cover;
 
@@ -339,6 +368,7 @@ body{
 }
 
 .currentEvents{
+    margin-top: 70px;
     background-image: url(img-3.jpg);
     background-size: cover;
 
@@ -367,12 +397,36 @@ body{
     }
 }
 
-.landing_s3{
+.currentEventsWrapper{
+    
     background-color: white;
+    padding-bottom: 70px;
+}
+
+.landing_s3{
+    background-color: #f4f4f4;
     padding: 20px 10px;
+    padding-top: 30px;
+    p{
+        padding-left: 20px;
+        padding-top: 20px;
+    }
+}
+
+.contact_title{
+    margin-left: 20px;
+    padding-bottom: 5px;
+    border-bottom: 4px solid #F6BD0B;
+    display: inline;
+    //padding-bottom: 20px;
 }
 
 .footer{
-    background-color: #F4F4F4;
+    background-color: #181E42;
     padding: 4px;
+}
+
+.left-line2{
+    //width: 70%;
+    //padding-top: 10px;
 }
