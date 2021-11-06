@@ -6,7 +6,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-@import "sass/home";
-@import "sass/navigation";
-@import "sass/crud";
+@import "sass/home";        // Styling for landing page
+@import "sass/navigation";  // Styling for landing page
+@import "sass/crud";        //Styling for non-landing pages
+@import "sass/leaderboard"; //Styling for leaderboard page
 @import "sass/slick";

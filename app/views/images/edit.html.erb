@@ -1,0 +1,9 @@
+<div class="content-box announcements-bg">
+  <%= link_to images_path, class: "back-button" do %>
+    <p><i class='fas fa-angle-double-left'></i> Back </p>
+  <% end %>
+  <div class="crud-body">
+    <h1 class="crud-header">Editing Image</h1>
+    <%= render 'form', image: @image %>
+  </div>
+</div>

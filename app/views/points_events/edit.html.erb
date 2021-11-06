@@ -1,6 +1,9 @@
-<h1>Editing Points Event</h1>
-
-<%= render 'form2', points_event: @points_event %>
-
-<%= link_to 'Show', @points_event %> |
-<%= link_to 'Back', points_events_path %>
+<div class="content-box points-events-bg">
+  <%= link_to points_events_path, class: "back-button" do %>
+    <p><i class='fas fa-angle-double-left'></i> Back </p>
+  <% end %>
+  <div class="crud-body">
+    <h1 class="crud-header">Editing Points Event</h1>
+    <%= render 'form2', points_event: @points_event %>
+  </div>
+</div>

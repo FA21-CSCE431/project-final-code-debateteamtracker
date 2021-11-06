@@ -34,22 +34,19 @@
       <%= form.label :author, class: "crud-text" %>
       <%= form.text_field :author, class: "crud-input" %>
     </div>
-
-    
-    <%= fields_for(@group_member_join) do |ab| %>
-      <div class="field">
-        <%= ab.label "All Groups" %>
-        <%= collection_select(:groups, :ids, @groups,:id, :title,{} ) %>
-      </div>
-    <% end %>
-
   </div> <!-- crud-flex -->
 
-
   <div class="crud-flex">
-    <p> Selecting a group will send all members in that group this announcement through email</p>
-  </div> <!-- crud flex -->
-
+    <div class="field" style="flex: 1">
+      <%= fields_for(@group_member_join) do |ab| %>
+        <%= ab.label "All Groups", class: "crud-text" %>
+        <div class="crud-right">
+          <%= collection_select(:groups, :ids, @groups,:id, :title,{} ,{class: "selection-field dropdown"}) %>
+          <p class="instruction-text"> Selecting a group will send all members in that group this announcement through email</p>
+        </div>
+      <% end %>
+    </div>
+  </div> <!-- crud-flex -->
 
   <div class="crud-flex">
     <div class="actions crud-submit">

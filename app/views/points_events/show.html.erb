@@ -1,30 +1,31 @@
-<p id="notice"><%= notice %></p>
-
-<div class="content-box">
+<div class="content-box points-events-bg">
+  <%= link_to points_events_path, class: "back-button" do %>
+    <p><i class='fas fa-angle-double-left'></i> Back </p>
+  <% end %>
   <div class="crud-body">
-  <h1 class="crud-header"><%= @points_event.name %> </h1>
-  <h3 class="crud-header">Value: <%= @points_event.value %> </h3>
-<table>
-  <thead>
-    <tr>
-      <th>Members</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
+    <div class="show-box">
+      <h1 class="crud-header"><%= @points_event.name %></h1>
+      <div class="crud-flex" style="font-size: 20px; margin-bottom: 20px">
+        <table>
+          <thead>
+            <tr>
+              <th>Members</th>
+              <th colspan="1"></th>
+            </tr>
+          </thead>
 
-  <tbody>
-      <%@points[@points_event.id - 1].each do |mg|%>
-        <tr>
-          <td><%= mg.name %></td>
-        </tr>   
-      <% end %>
-  </tbody>
-</table>
-
-
-<%= link_to 'Edit', edit_points_event_path(@points_event) %> |
-<%= link_to 'Back', points_events_path %>
-
-  </div> <!-- crud-body -->
-  <br>
-</div> <!-- content-box -->
+          <tbody>
+              <%@points[@points_event.id - 1].each do |mg|%>
+                <tr>
+                  <td><%= mg.name %></td>
+                </tr>
+              <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="crud-flex" style="margin-top: 40px">
+        <%= link_to 'Edit', edit_points_event_path(@points_event), class: "crud-button" %>
+      </div>
+    </div>
+  </div>
+</div>

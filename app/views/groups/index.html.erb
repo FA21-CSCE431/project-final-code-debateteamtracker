@@ -1,30 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-<div class="content-box">
+<div class="content-box groups-bg">
   <div class="crud-body">
-    <h1 class="crud-header">Groups</h1>
-    <table>
+    <h1 class="crud-header">Mailing Groups</h1>
+    <table class="crud-table">
       <thead>
         <tr>
           <th>Title</th>
-          <th colspan="4"></th>
+          <th colspan="2"></th>
         </tr>
       </thead>
 
       <tbody>
         <% @groups.each do |group| %>
           <tr>
-            <td><%= group.title %></td>
-            <td><%= link_to 'Show', group %></td>
-            <td><%= link_to 'Edit', edit_group_path(group) %></td>
-            <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td style="width: 70%;">
+              <%= link_to group.title, group, class:"crud-show" %>
+            </td>
+            <td><%= button_to 'Edit', edit_group_path(group), {method: :get, class: "crud-button"}  %></td>
+            <td><%= button_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete-button" %></td>
           </tr>
         <% end %>
       </tbody>
-
-
     </table>
-    <%= link_to 'New Group', new_group_path %>
-
-  </div>
-</div> <!-- crud-body -->
+    <%= link_to 'New Group', new_group_path, class: "submit-button" %>
+  </div> <!-- crud-body -->
+  <br>
+</div> <!-- content-box -->

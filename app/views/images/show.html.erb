@@ -1,0 +1,22 @@
+<div class="content-box announcements-bg">
+  <%= link_to images_path, class: "back-button" do %>
+    <p><i class='fas fa-angle-double-left'></i> Back </p>
+  <% end %>
+  <div class="crud-body">
+    <div class="show-box">
+      <h1 class="crud-header"><%= @image.name %></h1>
+      <div class="crud-flex" style="font-size: 20px; margin-bottom: 20px">
+        <p style="flex: 1">
+          <strong>Name:</strong>
+          <%= @image.name %>
+        </p>
+      </div>
+      <div class="crud-flex" style="font-size: 20px">
+        <%= image_tag(@image.pic, :style => "max-width: 70%; max-height: 500px;") %>
+      </div>
+      <div class="crud-flex" style="margin-top: 40px">
+        <%= link_to 'Edit', edit_image_path(@image), class: "crud-button" %>
+      </div>
+    </div>
+  </div>
+</div>

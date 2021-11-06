@@ -1,0 +1,67 @@
+@mixin respond($breakpoint) {
+	$breakpointEM: ($breakpoint / 16) *1em;
+	@if $breakpointEM > 2000 {
+		@media (max-width: $breakpointEM) {
+			@content;
+		}
+	} @else {
+		@media (max-width: $breakpointEM) {
+			@content;
+		}
+	}
+}
+
+$debyellow: #F6bd0b;
+$debbg: #100200B2;
+
+.leaderboard-body {
+	padding-top: 30px;
+	padding-left: 30px;
+	padding-right: 30px;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 960px;
+	min-height: 100vh;
+	padding-bottom: 50px;
+  color: $debyellow;
+  text-shadow: 2px 2px black;
+}
+
+.points-earned {
+  background-color: $debbg;
+	border: 2px solid $debyellow;
+  font-weight: 600;
+  color: $debyellow;
+  text-align: left;
+  border-collapse: collapse;
+
+  th, td {
+    font-weight: 600;
+    margin: 0px 10px;
+    color: $debyellow;
+    padding: 10px 20px;
+    text-align: left;
+    border: none;
+    text-shadow: none;
+  }
+}
+
+.leaderboard {
+  background-color: $debbg;
+	border: 2px solid $debyellow;
+  font-weight: 600;
+  color: $debyellow;
+  text-align: left;
+  border-collapse: collapse;
+
+  th, td {
+    font-weight: 600;
+    margin: 0px 10px;
+    color: $debyellow;
+    padding: 10px 20px;
+    text-align: left;
+    border: none;
+    text-shadow: none;
+  }
+}
