@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 2021_11_02_235217) do
   end
 
   create_table "member_groups", force: :cascade do |t|
-    t.integer "member_id"
-    t.integer "group_id"
+    t.integer "member_id", null: false
+    t.integer "group_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -23,14 +23,17 @@
       <%= form.number_field :value, class: "crud-input" %>
     </div>
   </div> <!-- crud-flex -->
-  <div>
+
+  <div class="crud-flex">
   <%= fields_for(@point_category) do |ab| %>
-    <div class="field">
+    
       <%= ab.label "All members" %>
       <%= collection_select(:members, :id, @all_members, :id, :name, {}, {:multiple => true}) %>
-    </div>
+    
   <% end %>
   </div>
+
+
   <div class="crud-flex">
     <div class="actions crud-submit">
       <%= form.submit class: "submit-button" %>

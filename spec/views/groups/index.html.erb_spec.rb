@@ -4,12 +4,10 @@ RSpec.describe "groups/index", type: :view do
   before(:each) do
     assign(:groups, [
       Group.create!(
-        title: "Title",
-        email: "Email"
+        title: "Title"
       ),
       Group.create!(
-        title: "Title",
-        email: "Email"
+        title: "Title"
       )
     ])
   end
