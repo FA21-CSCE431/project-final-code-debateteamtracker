@@ -14,11 +14,17 @@ class PointsEventsController < ApplicationController
 
   # GET /points_events/1 or /points_events/1.json
   def show
+    @members = Member.all
   end
 
   # GET /points_events/new
   def new
     @points_event = PointsEvent.new
+    # Pass over collection of all members
+    # @all_members = Member.all
+    @all_members = Member.all
+    # Pass over join table - assign points_events Foriegn Key automatically to join table
+    @point_category = @points_event.participations.build
   end
 
   # GET /points_events/1/edit
@@ -28,6 +34,14 @@ class PointsEventsController < ApplicationController
   # POST /points_events or /points_events.json
   def create
     @points_event = PointsEvent.new(points_event_params)
+
+    # if empty, then build collection again
+    params[:members][:id].each do |member|
+      if !member.empty?
+        @points_event.participations.build(:member_id => member)
+
+      end
+    end
 
     respond_to do |format|
       if @points_event.save
@@ -72,4 +86,8 @@ class PointsEventsController < ApplicationController
     def points_event_params
       params.require(:points_event).permit(:name, :value)
     end
+
+    # def tabulate
+
+    # end
 end

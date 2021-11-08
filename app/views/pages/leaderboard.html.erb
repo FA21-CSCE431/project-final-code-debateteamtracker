@@ -2,6 +2,29 @@
   <div class="crud-body">
     <h1 class="crud-header">Leaderboard</h1>
 
+    <h3>Your Points</h3>
+    <table class="pointsEarned">
+        <thead>
+            <tr>
+                <th class="event">Category</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+
+            <% @entries.each do |entry| %>
+                <tr>
+                    <td class="name"><%= entry.name %></td>
+                    <td><%= entry.value %></td>
+                </tr>
+            <% end %>
+        <tbody>
+        <p>Sign in to see what you have earned points for.</p>
+    </table>
+
+    <h3>Top 10 Members</h3>
     <table class="leaderboard">
         <thead>
             <tr>
@@ -9,7 +32,10 @@
                 <th>Points</th>
             </tr>
         </thead>
+
         <tbody>
+
+
             <% @members.each do |member| %>
                 <tr>
                     <td class="name"><%= member.name %></td>

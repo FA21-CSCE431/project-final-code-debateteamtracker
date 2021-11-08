@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe "groups/edit", type: :view do
   before(:each) do
     @group = assign(:group, Group.create!(
-      title: "MyString",
-      email: "MyString"
+      title: "MyString"
     ))
   end
 
@@ -15,7 +14,6 @@ RSpec.describe "groups/edit", type: :view do
 
       assert_select "input[name=?]", "group[title]"
 
-      assert_select "input[name=?]", "group[email]"
     end
   end
 end
