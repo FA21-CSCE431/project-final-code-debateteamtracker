@@ -1,12 +1,34 @@
-<h1> Welcome to your Profile <%= @member.name %></h1>
+<center>
+  <br>
+  <h1> Welcome to your Profile overview</h1>
+  <br>
+  <h2>
+      <br>
+      <img src=<%= current_admin.avatar_url %>>
+      <br>
+      <strong> Your total Points: </strong>
+      <br>
+      <%= @member.points %>
+      <br>
+      <br>
+      <table class="pointsEarned">
+        <thead>
+            <tr>
+                <th class="event">Category</th>
+                <th>Points</th>
+            </tr>
+        </thead>
 
-<h2>
-  <center>
-    <br>
-    <img src=<%= current_admin.avatar_url %>>
-    <br>
-    <strong> Your total Points: </strong>
-    <br>
-    <%= @member.points %>
-  </center>
-</h2>
+        <tbody>
+
+
+            <% @entries.each do |entry| %>
+                <tr>
+                    <td class="name"><%= entry.name %></td>
+                    <td><%= entry.value %></td>
+                </tr>
+            <% end %>
+        <tbody>
+    </table>
+  </h2>
+</center>

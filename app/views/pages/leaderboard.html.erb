@@ -2,27 +2,30 @@
   <div class="crud-body">
     <h1 class="crud-header">Leaderboard</h1>
 
-    <h3>Your Points</h3>
-    <table class="pointsEarned">
-        <thead>
-            <tr>
-                <th class="event">Category</th>
-                <th>Points</th>
-            </tr>
-        </thead>
+    <% if !current_admin.nil?%>
+        <% if Member.exists?(['email LIKE ? AND priority = 1', "%#{current_admin.email}"]) %>
+            <h3>Your Points</h3>
+            <table class="pointsEarned">
+                <thead>
+                    <tr>
+                        <th class="event">Category</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
 
-        <tbody>
+                <tbody>
 
 
-            <% @entries.each do |entry| %>
-                <tr>
-                    <td class="name"><%= entry.name %></td>
-                    <td><%= entry.value %></td>
-                </tr>
-            <% end %>
-        <tbody>
-        <p>Sign in to see what you have earned points for.</p>
-    </table>
+                    <% @entries.each do |entry| %>
+                        <tr>
+                            <td class="name"><%= entry.name %></td>
+                            <td><%= entry.value %></td>
+                        </tr>
+                    <% end %>
+                <tbody>
+            </table>
+        <% end %>
+    <% end %>
 
     <h3>Top 10 Members</h3>
     <table class="leaderboard">
