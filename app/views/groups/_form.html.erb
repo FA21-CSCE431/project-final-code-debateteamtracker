@@ -16,20 +16,17 @@
     <%= form.text_field :title %>
   </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-
+  <div>
   <%= fields_for(@group_member_join) do |ab| %>
-    <div class="field">
+    <div>
+      
       <%= ab.label "All Members" %><br/>
+
       <%= collection_select(:members, :id, @all_members, :id, :name, {},{:multiple => true})%>
+      <p>Hold Ctrl to select multiple members</p>
 
-    
   <% end %>
-
+  </div>
 
 
   <div class="actions">

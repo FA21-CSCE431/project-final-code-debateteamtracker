@@ -25,6 +25,7 @@
             <td><%= link_to 'Show', announcement %></td>
             <td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
             <td><%= link_to 'Destroy', announcement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            
           </tr>
         <% end %>
       </tbody>
@@ -32,6 +33,7 @@
     <div>
       <%= link_to 'New Announcement', new_announcement_path, class: "submit-button" %>
     </div>
+    
   </div> <!-- crud-body -->
   <br>
 </div> <!-- content-box -->
