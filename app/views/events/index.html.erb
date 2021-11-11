@@ -1,36 +1,54 @@
 <h1>Calendar</h1>
 <div class="events index">
-  <h2>Events</h2>
+  
 
-  <%= link_to("Add New Event", new_event_path, :class => 'action new') %>
-
+  <%= button_to("Add New Event", new_event_path, :class => 'action new') %>
   <div class="crud-body">
     <h1 class="crud-header">Events</h1>
+
+     <%= month_calendar(events: @events) do |date, events| %>
+  <%= date.day %>
+
+  <% events.each do |event| %>
+    <div class="event_name">
+      <%= event.name %>
+    </div>
+    <div class='preview'>
+      <div><%= event.location %></div>
+      <div><span><%= event.start_time.strftime("%I:%M%p")  %></span> - <span> <%= event.end_time.strftime("%I:%M%p") %></span></div>
+      <div><%= event.description %></div>
+    </div>
+  <% end %>
+<% end %>
+
+
     <table class="listing" summary="Event list">
       <tr class="header">
         <th>Event</th>
         <th>Location</th>
-        <th>Date</th>
-        <th>Time</th>
+        <th>Start</th>
+        <th>End</th>
         <th>Description</th>
       </tr>
       <% @events.each do |event| %>
       <tr>
         <td><%= event.name %></td>
         <td><%= event.location %></td>
-        <td><%= event.date.strftime("%B, %d, %Y") %></td>
-        <td><%= event.time %></td>
+        <td><%= event.start_time %></td>
+        <td><%= event.end_time %></td>
         <td class="center"><%= event.description %></td>
         <td class="actions">
           <%= button_to("Show", event_path(event), :class => 'action show', method: :get) %> <%=
-          button_to("Edit", edit_event_path(event), :class => 'action edit', method: :get) %>
-          <%= button_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          
+          button_to("Edit", edit_event_path(event), :class => 'action edit', method: :get) %> <%=
+          button_to("Delete", delete_event_path(event), :class => 'action delete', method: :get)
+          %>
         </td>
       </tr>
       <% end %>
-    </table>
-    <%= month_calendar do |date| %> <%= date %><% end %>
+  
+
+
+
   </div> <!-- crud-body -->
   <br>
 </div> <!-- content-box -->
