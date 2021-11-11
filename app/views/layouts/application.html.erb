@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DebateTeamTracker</title>
+    <%= favicon_link_tag asset_path('logo.png') %>
+    <title>TAMU Speech & Debate</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <%= csrf_meta_tags %> <%= csp_meta_tag %>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,10 +31,8 @@
   <body>
     <div class="navbar">
       <div class="left-navbar">
-        <div class="child_logo"><p>Logo Here</p></div>
-      </div>
-      <!-- left-navbar -->
-
+        <div class="child_logo"><%= image_tag("logo.png", :size => "60x60") %></div>
+      </div> <!-- left-navbar -->
       <div class="right-navbar">
         <div class="link">
           <%= link_to "Home", root_path, class: "link" %>

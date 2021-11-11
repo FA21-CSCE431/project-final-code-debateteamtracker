@@ -23,8 +23,7 @@
     align-content: center;
 
     .child_logo{
-        padding: 0px 20px;
-        height: 40px;
+        padding: 20px 20px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -33,7 +32,6 @@
 
 .right-navbar{
     padding-right: 10px;
-    width: 18%;
     min-width: 200px;
     display: flex;
     justify-content: space-between;
@@ -57,11 +55,17 @@
             line-height: 15px;
         }
     }
-    
-    .link:hover{
+
+    .link-box:hover{
         cursor: pointer;
     }
-    
+
+    .link {
+      display: flex;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
     a{
         text-decoration: none;
         color: #500000;
@@ -92,3 +96,10 @@
     }
 }
 
+.google-sign-in {
+  display: flex;
+  margin-top: 5px;
+  margin-right: 20px;
+  height: 40;
+
+}

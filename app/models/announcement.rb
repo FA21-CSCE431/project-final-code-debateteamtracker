@@ -3,4 +3,9 @@ class Announcement < ApplicationRecord
     validates :description, presence:true
     validates :date, presence:true
     validates :author, presence:true
+
+    has_many :member_groups
+    has_many :groups
+    has_many :members
+
 end

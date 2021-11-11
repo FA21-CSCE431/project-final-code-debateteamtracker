@@ -1,0 +1,47 @@
+<%= form_with(model: member) do |form| %>
+  <% if member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+        <% member.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="crud-flex">
+    <div class="field" style="flex: 1">
+      <%= form.label :email, class: "crud-text" %>
+      <%= form.text_field :email, class: "crud-input" %>
+    </div>
+
+    <div class="field" style="flex: 1">
+      <%= form.label :name, class: "crud-text" %>
+      <%= form.text_field :name, class: "crud-input" %>
+    </div>
+  </div> <!-- crud flex -->
+
+  <div class="crud-flex">
+    <div class="field" style="flex: 1">
+      <%= form.label :points, class: "crud-text" %>
+      <%= form.number_field :points, class: "crud-input" %>
+    </div>
+
+    <div class="field" style="flex: 1">
+      <%= form.radio_button :priority, 1 %>
+      <%= form.label :priority, 'Member - 1', :value => 1 %>
+      <%= form.radio_button :priority, 2 %>
+      <%= form.label :priority, 'Secondary Admin - 2', :value => 2 %>
+      <%= form.radio_button :priority, 3 %>
+      <%= form.label :priority, 'Primary Admin - 3', :value => 3 %>
+    </div>
+  </div> <!-- crud-flex -->
+  
+  <div class="crud-flex">
+    <div class="actions crud-submit">
+      <%= form.submit class: "submit-button" %>
+    </div>
+  </div> <!-- crud flex -->
+<% end %>
