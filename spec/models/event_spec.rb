@@ -10,16 +10,16 @@ RSpec.describe Event, type: :model do
       event = Event.new(location: "").save
       expect(event).to eq(false)
     end
-    it 'ensures the presence of a date' do   #
-      event = Event.new(date: "").save
+    it 'ensures the presence of start' do   #
+      event = Event.new(start_time: "").save
+      expect(event).to eq(false)
+    end
+    it 'ensures the presence of end' do   #
+      event = Event.new(end_time: "").save
       expect(event).to eq(false)
     end
     it 'ensures the presence of a description' do   #
       event = Event.new(description: "").save
-      expect(event).to eq(false)
-    end
-    it 'ensures the presence of a time' do   #
-      event = Event.new(time: "").save
       expect(event).to eq(false)
     end
   end

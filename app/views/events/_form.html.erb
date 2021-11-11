@@ -2,22 +2,23 @@
 <table summary="event form fields">
   <tr>
     <th>Name</th>
-    <td><%= f.text_field(:name) %></td>
+       <%= f.label :name, class: "crud-text" %>
+      <td><%= f.text_field :name, class: "crud-input" %></td>
   </tr>
   <tr>
-    <th>Location</th>
-    <td><%= f.text_field(:location) %></td>
+       <%= f.label :location, class: "crud-text" %>
+      <td><%= f.text_field :location, class: "crud-input" %></td>
   </tr>
   <tr>
-    <th>Start</th>
-    <td><%= f.datetime_field(:start_time) %></td>
+        <%= f.label :start_time, class: "crud-text" %>
+      <td><%= f.text_field :start_time, class: "crud-input" %></td>
   </tr>
   <tr>
-    <th>End</th>
-    <td><%= f.datetime_field(:end_time) %></td>
+       <%= f.label :end_time, class: "crud-text" %>
+      <td><%= f.text_field :end_time, class: "crud-input" %></td>
   </tr>
   <tr>
-    <th>Description</th>
-    <td><%= f.text_field(:description) %></td>
+         <%= f.label :description, class: "crud-text" %>
+      <td><%= f.text_field :description, class: "crud-input" %></td>
   </tr>
 </table>
