@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all',
     'data-turbolinks-track': 'reload' %> <%= javascript_pack_tag 'application',
     'data-turbolinks-track': 'reload' %>
@@ -34,18 +35,34 @@
       <!-- left-navbar -->
 
       <div class="right-navbar">
-        <div class="link"><%= link_to "Home", root_path %></div>
         <div class="link">
-          <%= link_to "Leaderboard", pages_leaderboard_path %>
+          <%= link_to "Home", root_path, class: "link" %>
         </div>
         <div class="link">
-          <%= link_to "Announcements", announcements_path %>
+          <%= link_to "Leaderboard", pages_leaderboard_path, class: "link" %>
         </div>
-        <div class="link"><%= link_to "Calendar", events_path %></div>
+        <div class="link">
+          <%= link_to "Announcements", announcements_path, class: "link" %>
+        </div>
+        <div class="link">
+          <%= link_to "Calendar", events_path, class: "link" %>
+        </div>
+        <% if current_admin.nil?%>
+          <div class="link"><%= link_to "Sign in with Google",
+          admin_google_oauth2_omniauth_authorize_path, method: :post %></div>
+        <% end %>
+        <% if !current_admin.nil? %>
+          <% if Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"]) %>
+            <div class="link "><%= link_to "Members", members_path %></div>
+          <% end %>
+          <div class="link">
+            <%= link_to "Profile", profile_index_path, class: "link" %>
+          </div>
+          <div class="link"><%= link_to "Sign out",
+          destroy_admin_session_path %></div>
+        <% end %>
       </div>
       <!-- navbar -->
-      <%= link_to "Sign in with Google",
-      admin_google_oauth2_omniauth_authorize_path, method: :post %>
     </div>
     <% if flash.any? %> <% flash.each do |key, value| -%>
     <section class="flash flash__<%= key %>"><%= value.html_safe %></section>

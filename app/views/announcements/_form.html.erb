@@ -34,4 +34,43 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+  <div class="crud-flex">
+    <div class="field" style="flex: 1">
+      <%= form.label :description, class: "crud-text" %>
+      <%= form.text_area :description, rows: 10, class: "crud-input" %>
+    </div>
+  </div> <!-- crud flex -->
+  <div class="crud-flex">
+    <div class="field" style="flex: 1">
+      <%= form.label :date, class: "crud-text" %>
+      <%= form.date_field :date, class: "crud-input" %>
+    </div>
+  </div> <!-- crud-flex -->
+  <div class="crud-flex">
+    <div class="field" style="flex: 1">
+      <%= form.label :author, class: "crud-text" %>
+      <%= form.text_field :author, class: "crud-input" %>
+    </div>
+
+    
+    <%= fields_for(@group_member_join) do |ab| %>
+      <div class="field">
+        <%= ab.label "All Groups" %>
+        <%= collection_select(:groups, :ids, @groups,:id, :title,{} ) %>
+      </div>
+    <% end %>
+
+  </div> <!-- crud-flex -->
+
+
+  <div class="crud-flex">
+    <p> Selecting a group will send all members in that group this announcement through email</p>
+  </div> <!-- crud flex -->
+
+
+  <div class="crud-flex">
+    <div class="actions crud-submit">
+      <%= form.submit class: "submit-button" %>
+    </div>
+  </div> <!-- crud flex -->
 <% end %>

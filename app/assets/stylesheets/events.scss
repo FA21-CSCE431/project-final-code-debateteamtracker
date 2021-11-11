@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .simple-calendar {
   border: 2px solid black;
+  margin-bottom: 20px;
   .day {
     border: 2px solid black;
   }
@@ -40,5 +41,27 @@
   }
 
   .has-events {
+    background-color: rgb(255, 153, 153);
   }
+
+  .has-events:hover {
+    background-color: skyblue;
+  }
+
+  .event_name {
+    background-color: black;
+    color: white;
+  }
+  .preview{
+      display: none;
+  }
+
+  .event_name:hover + div {
+    display: block;
+  }
+
+  .h2 {
+    color: blue;
+  }
+ 
 }
