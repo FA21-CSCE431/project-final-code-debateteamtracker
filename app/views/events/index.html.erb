@@ -1,8 +1,12 @@
 <h1>Calendar</h1>
 <div class="events index">
   
-
-  <%= button_to("Add New Event", new_event_path, :class => 'action new') %>
+    <% if !current_admin.nil?%>
+     <% if Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"]) %>
+        <%= link_to("Add New Event", new_event_path, :class => 'action new', :method => :get) %>
+        <%= link_to("Delete All Events", delete_all_events_path, :class => 'action delete_all') %>
+      <% end %>
+    <% end %>
   <div class="crud-body">
     <h1 class="crud-header">Events</h1>
 
@@ -21,8 +25,10 @@
   <% end %>
 <% end %>
 
-
+    <% if !current_admin.nil?%>
+     <% if Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"]) %>
     <table class="listing" summary="Event list">
+    <h2>Upcoming Events</h2>
       <tr class="header">
         <th>Event</th>
         <th>Location</th>
@@ -31,20 +37,54 @@
         <th>Description</th>
       </tr>
       <% @events.each do |event| %>
-      <tr>
-        <td><%= event.name %></td>
-        <td><%= event.location %></td>
-        <td><%= event.start_time %></td>
-        <td><%= event.end_time %></td>
-        <td class="center"><%= event.description %></td>
-        <td class="actions">
-          <%= button_to("Show", event_path(event), :class => 'action show', method: :get) %> <%=
-          button_to("Edit", edit_event_path(event), :class => 'action edit', method: :get) %> <%=
-          button_to("Delete", delete_event_path(event), :class => 'action delete', method: :get)
-          %>
-        </td>
-      </tr>
+      <% if event.start_time > DateTime.current %>
+        <tr>
+          <td><%= event.name %></td>
+          <td><%= event.location %></td>
+          <td><%= event.start_time %></td>
+          <td><%= event.end_time %></td>
+          <td class="center"><%= event.description %></td>
+          <td class="actions">
+            <%= button_to("Show", event_path(event), :class => 'action show', method: :get) %> <%=
+            button_to("Edit", edit_event_path(event), :class => 'action edit', method: :get) %> <%=
+            button_to("Delete", delete_event_path(event), :class => 'action delete', method: :get)
+            %>
+          </td>
+        </tr>
+        <%end%>
       <% end %>
+    
+
+
+   
+    <table class="listing" summary="Event list">
+      <h2>Past Events</h2>
+      <tr class="header">
+        <th>Event</th>
+        <th>Location</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Description</th>
+      </tr>
+      <% @events.each do |event| %>
+      <% if event.start_time < DateTime.current %>
+        <tr>
+          <td><%= event.name %></td>
+          <td><%= event.location %></td>
+          <td><%= event.start_time %></td>
+          <td><%= event.end_time %></td>
+          <td class="center"><%= event.description %></td>
+          <td class="actions">
+            <%= button_to("Show", event_path(event), :class => 'action show', method: :get) %> <%=
+            button_to("Edit", edit_event_path(event), :class => 'action edit', method: :get) %> <%=
+            button_to("Delete", delete_event_path(event), :class => 'action delete', method: :get)
+            %>
+          </td>
+        </tr>
+        <%end%>
+      <% end %>
+      <% end %>
+        <% end %>
   
 
 

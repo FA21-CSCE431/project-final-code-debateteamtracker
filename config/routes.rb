@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     member do
       get :delete
     end
+    collection do
+      get 'delete_all'
+    end
   end
 
   resources :points_events
