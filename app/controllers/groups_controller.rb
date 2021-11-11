@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_groups, only: %i[ show edit update destroy ]
+  before_action :set_group, only: %i[ show edit update destroy ]
   before_action :authenticate_permission
 
   def authenticate_permission
@@ -80,6 +80,6 @@ class GroupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def group_params
-      params.require(:group).permit(:title, :email)
+      params.require(:group).permit(:title)
     end
 end
