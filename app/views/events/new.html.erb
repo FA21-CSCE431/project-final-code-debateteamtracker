@@ -6,7 +6,7 @@
   <%= form_for(@event, :url => events_path, :method => 'post') do |f| %>
   <%=render(:partial => 'form', :locals=> {:f => f}) %>
 
-  <div class="form-buttons"><<%= f.submit class: "submit-button" %></div>
+  <div class="form-buttons"><%= f.submit class: "submit-button" %></div>
 
   <% end %>
 </div>

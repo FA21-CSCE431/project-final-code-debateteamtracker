@@ -1,24 +1,23 @@
 <%= error_messages_for(f.object) %>
 <table summary="event form fields">
   <tr>
-    <th>Name</th>
-       <%= f.label :name, class: "crud-text" %>
+      <th><%= f.label :name, class: "crud-text" %></th>
       <td><%= f.text_field :name, class: "crud-input" %></td>
   </tr>
   <tr>
-       <%= f.label :location, class: "crud-text" %>
+      <th><%= f.label :location, class: "crud-text" %></th>
       <td><%= f.text_field :location, class: "crud-input" %></td>
   </tr>
   <tr>
-        <%= f.label :start_time, class: "crud-text" %>
-      <td><%= f.text_field :start_time, class: "crud-input" %></td>
+      <th><%= f.label :start_time, class: "crud-text" %></th>
+      <td><%= f.datetime_field :start_time, class: "crud-input" %></td>
   </tr>
   <tr>
-       <%= f.label :end_time, class: "crud-text" %>
-      <td><%= f.text_field :end_time, class: "crud-input" %></td>
+      <th><%= f.label :end_time, class: "crud-text" %></th>   
+      <td><%= f.datetime_field :end_time, class: "crud-input" %></td>
   </tr>
   <tr>
-         <%= f.label :description, class: "crud-text" %>
-      <td><%= f.text_field :description, class: "crud-input" %></td>
+      <th><%= f.label :description, class: "crud-text" %></th>
+      <td><%= f.text_area :description, class: "crud-input" %></td>
   </tr>
 </table>
