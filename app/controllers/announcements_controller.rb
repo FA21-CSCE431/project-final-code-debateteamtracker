@@ -22,7 +22,8 @@ class AnnouncementsController < ApplicationController
   end
 
   # GET /announcements/1/edit
-  def edit; end
+  def edit; 
+  end
 
   # POST /announcements or /announcements.json
   def create
