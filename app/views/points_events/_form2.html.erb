@@ -25,24 +25,6 @@
   </div> <!-- crud-flex -->
 
   <div class="crud-flex">
-  <%= fields_for(@point_category) do |ab| %>
-      
-      <%= ab.label "All Members", :class => "pointsevents-memberlist" %>
-      <%= collection_select(:members, :id, @all_members, :id, :name, {}, {:multiple => true}) %>
-
-  <% end %>
-  </div>
-
-  <br>
-    <h4> 
-      <i>
-        * Use CTRL+click to select multiple members from the member list and please select all of the members you would like to assign points for from the list above. 
-      </i>
-    </h4> 
-  <br>
-
-
-  <div class="crud-flex">
     <div class="actions crud-submit">
       <%= form.submit class: "submit-button" %>
     </div>

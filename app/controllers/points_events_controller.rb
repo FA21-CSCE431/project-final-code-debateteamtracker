@@ -29,6 +29,7 @@ class PointsEventsController < ApplicationController
 
   # GET /points_events/1/edit
   def edit
+    @all_members = Member.all
   end
 
   # POST /points_events or /points_events.json
@@ -47,19 +48,23 @@ class PointsEventsController < ApplicationController
       if @points_event.save
         format.html { redirect_to @points_event, notice: "Points event was successfully created." }
         format.json { render :show, status: :created, location: @points_event }
+        tabulate()
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @points_event.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /points_events/1 or /points_events/1.json
   def update
+
     respond_to do |format|
       if @points_event.update(points_event_params)
         format.html { redirect_to @points_event, notice: "Points event was successfully updated." }
         format.json { render :show, status: :ok, location: @points_event }
+        tabulate()
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @points_event.errors, status: :unprocessable_entity }
@@ -69,10 +74,12 @@ class PointsEventsController < ApplicationController
 
   # DELETE /points_events/1 or /points_events/1.json
   def destroy
+    Participation.destroy_by(points_event_id: @points_event.id)
     @points_event.destroy
     respond_to do |format|
       format.html { redirect_to points_events_url, notice: "Points event was successfully destroyed." }
       format.json { head :no_content }
+      tabulate()
     end
   end
 
@@ -87,7 +94,34 @@ class PointsEventsController < ApplicationController
       params.require(:points_event).permit(:name, :value)
     end
 
-    # def tabulate
+    def tabulate
+      @total_points_events = PointsEvent.all
+      @total_members = Member.all
+      @total_participations = Participation.all
 
-    # end
+      # Traverse through the list of members
+      @total_members.each do |member|
+        # Find participation id list where the points_event member id matches the member id in the member list
+        participation_ids = @total_participations.where(:member_id => member.id)
+        points_events_ids = []
+        
+        # Get list of events attended for one member
+        participation_ids.each do |p|
+          # Look through the participation ids for a specific member and find the points event id associated with that member id
+          temp = @total_points_events.where(:id => p.points_event_id)
+          if !temp.empty?
+            points_events_ids << temp # Append temp to the list of points event ids
+          end
+        end
+      
+        sum = 0
+        # Calculate sum of member's points
+        points_events_ids.each do |p_event|
+          sum = sum + p_event[0].value
+        end
+
+        member.update_attribute(:points, sum)
+      end
+
+    end
 end
