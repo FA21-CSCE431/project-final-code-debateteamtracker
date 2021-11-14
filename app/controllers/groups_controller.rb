@@ -26,7 +26,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
-    
+    @all_members = Member.all
   end
 
   # POST /groups or /groups.json
@@ -50,7 +50,11 @@ class GroupsController < ApplicationController
 
   # PATCH/PUT /groups/1 or /groups/1.json
   def update
-    @members = Member.all
+    params[:members][:id].each do |member|
+      if !member.empty?
+        @group.member_groups.buil(:member_id =>member)
+      end
+    end
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: "Group was successfully updated." }
@@ -65,6 +69,7 @@ class GroupsController < ApplicationController
   # DELETE /groups/1 or /groups/1.json
   def destroy
     #@members = Member.all
+    MemberGroup.destroy_by(group_id: @group.id)
     @group.destroy
     respond_to do |format|
       format.html { redirect_to groups_url, notice: "Group was successfully destroyed." }
