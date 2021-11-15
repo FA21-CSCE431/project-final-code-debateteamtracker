@@ -1,14 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @points_event.name %>
-</p>
+<div class="content-box">
+  <div class="crud-body">
+  <h1 class="crud-header"><%= @points_event.name %> </h1>
+  <h3 class="crud-header">Value: <%= @points_event.value %> </h3>
+<table>
+  <thead>
+    <tr>
+      <th>Members</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Value:</strong>
-  <%= @points_event.value %>
-</p>
+  <tbody>
+      <%@points[@points_event.id - 1].each do |mg|%>
+        <tr>
+          <td><%= mg.name %></td>
+        </tr>   
+      <% end %>
+  </tbody>
+</table>
+
 
 <%= link_to 'Edit', edit_points_event_path(@points_event) %> |
 <%= link_to 'Back', points_events_path %>
+
+  </div> <!-- crud-body -->
+  <br>
+</div> <!-- content-box -->

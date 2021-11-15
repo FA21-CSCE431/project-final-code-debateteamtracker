@@ -12,9 +12,24 @@ class GroupsController < ApplicationController
     @groups = Group.all
   end
 
+  def findMembers
+    @member_groups = []
+    memberGroup = MemberGroup.all
+    members = Member.all
+    @groups.each do |group|
+      temp = memberGroup.where(group_id: group.id)
+      m = []
+      temp.each do |t|
+        m << members.find(t.member_id)
+      end
+      @member_groups << m
+    end
+  end
+
   # GET /groups/1 or /groups/1.json
   def show
-    @members = Member.all
+    @groups = Group.all
+    findMembers
   end
 
   # GET /groups/new
@@ -52,7 +67,7 @@ class GroupsController < ApplicationController
   def update
     params[:members][:id].each do |member|
       if !member.empty?
-        @group.member_groups.buil(:member_id =>member)
+        @group.member_groups.build(:member_id =>member)
       end
     end
     respond_to do |format|
