@@ -17,12 +17,20 @@ RSpec.describe 'Writing a points event', type: :feature do
     make_admin
     visit points_events_path
     expect(page).to have_content('Points Events')
-    #visit new_points_event_path
     click_on 'New Points Event'
     fill_in 'Name', with: 'Debate 1'
     fill_in 'Value', with: '5'
 
+    select "admin", :from => "members_id"
+
+
     click_on 'Create Points event'
+
+    visit members_path
+    # Expect Members to have the points
+    expect(page).to have_content(5)
+
+
     visit points_events_path
     expect(page).to have_content('Debate 1')
     expect(page).to have_content('5')
@@ -37,10 +45,19 @@ RSpec.describe 'Writing a points event', type: :feature do
     expect(page).to have_content('Debate 1')
     expect(page).to have_content('10')
 
+    visit members_path
+    # Expect Members to have the points
+    expect(page).to have_content(10)
+
+
     visit points_events_path
     click_on 'Delete'
     expect(page).to have_no_content('Debate 1')
     expect(page).to have_no_content('10')
 
+    visit members_path
+    # Expect Members to have the points
+    expect(page).to have_content(0)
   end
+
 end
