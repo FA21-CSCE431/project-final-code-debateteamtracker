@@ -1,9 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @group.title %>
-</p>
+<div class="content-box">
+  <div class="crud-body">
+    <h1 class="crud-header"><%= @group.title %> </h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Members</th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+      <tbody>
+          <%@member_groups[@group.id - 1].each do |mg|%>
+            <tr>
+              <td><%= mg.name %></td>
+            </tr>   
+          <% end %>
+      </tbody>
+    </table>
+    <%= link_to 'Edit', edit_group_path(@group) %> |
+    <%= link_to 'Back', groups_path %>
+  </div> <!-- crud-body -->
+</div> <!-- content-box -->

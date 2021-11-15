@@ -10,11 +10,26 @@ class PointsEventsController < ApplicationController
   # GET /points_events or /points_events.json
   def index
     @points_events = PointsEvent.all
+    
   end
 
+  def findMembers
+    @points = []
+    participation = Participation.all
+    members = Member.all
+    @points_events.each do |pe|
+      temp = participation.where(points_event_id: pe.id)
+      m = []
+      temp.each do |t|
+        m << members.find(t.member_id)
+      end
+      @points << m
+    end
+  end
   # GET /points_events/1 or /points_events/1.json
   def show
-    @members = Member.all
+    @points_events = PointsEvent.all
+    findMembers
   end
 
   # GET /points_events/new
