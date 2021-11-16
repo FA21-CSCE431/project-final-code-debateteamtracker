@@ -1,3 +1,19 @@
 // Place all the styles related to the Points_events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.points-events-show{
+    h3{
+        text-align: center;
+        width: 80%;
+        margin: 0 auto;
+        border: 1px solid black;
+        padding: 10px;
+    }
+    p{
+        width: 80%;
+        margin: 0 auto;
+        border: 1px solid black;
+        padding: 10px;
+    }
+}
