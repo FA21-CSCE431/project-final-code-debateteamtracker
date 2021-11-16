@@ -11,6 +11,9 @@ class CreateHomepages < ActiveRecord::Migration[6.1]
       t.string :emailfive
       t.string :contact
       t.string :contactcontent
+      t.string :imageone
+      t.string :imagetwo
+      t.string :imagethree
 
       t.timestamps
     end

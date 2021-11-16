@@ -1,6 +1,8 @@
-<div class="wrapper">
+<% content_for :head do %>
+  <meta name="turbolinks-cache-control" content="no-cache">
+<% end %>
 
-<%= javascript_pack_tag 'my_js' %>
+<div class="wrapper" data-turbolinks="false">
 
   <div class="max-width">
     <div class="landing_s1 sections">
@@ -12,8 +14,16 @@
            <!--<h3 class="subtitle"> Place holder Header / Description of the club </h3>-->
             </div> <!-- underline -->
             <div class="button-flex">
-              <div class="button2" onclick="myFunction()"> <p> About Us </p> </div>
-              <div class="button2" onclick="myFunction2()"> <p> Upcoming Events </p> </div>
+              <% @homepages.each do |homepage| %>
+                
+                <% if !homepage.about.empty? %>
+                  <div class="button2" onclick="myFunction()"> <p> About Us </p> </div>
+                <% end %>
+
+                <% if @events.exists? %>
+                  <div class="button2" onclick="myFunction2()"> <p> Upcoming Events </p> </div>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -26,6 +36,8 @@
         </div>
       </div>
 
+  <% @homepages.each do |homepage| %>
+    <% if !homepage.about.empty? %>
       <div class="landing_s2 sections" id="scroll_stop">
         <div class="seventy">
           <div class="about">
@@ -33,7 +45,6 @@
             <!--<h3> About Us </h3>-->
             <!--<p> The Texas A&M Speech and Debate Team started as a student-run, student-funded, and student-oriented organization to support speech and debate activities for A&M students. Today, the team has grown as an organization and is sponsored by the College of Liberal Arts. The team competes in 11 individual speaking and acting events, as well as Parliamentary and Lincoln-Douglas styles debate. Our decree is to compete at a national level while impacting both our community and the world at a grassroots level. It’s not enough to just give empty speeches at TAMU, instead we strive to turn our debate experience and our speech topics into real movements and community involvement that we feel both betters the competition, the community, and ourselves. </p>-->
             
-            <% @homepages.each do |homepage| %>
               <h3> <%= homepage.about %> </h3>
               <div>
                 <p><%= homepage.aboutcontentone %></p>
@@ -42,15 +53,42 @@
                   <p><%= homepage.aboutcontenttwo %></p>
                 <% end %>
               </div>
-            <% end %>
 
             <div class="right-line"></div>
           </div>
           <div class="about-image">
-              <!--<p> place holder </p>-->
+            <% @homepages.each do |homepage| %>
+              <% if !homepage.imageone.empty? or !homepage.imagetwo.empty? or !homepage.imagethree.empty?%>
+                <div class="your-class">
+
+                <% if !homepage.imageone.empty? %>
+                  <div class="image-container">
+                    <%= image_tag(homepage.imageone, style: 'width:100%;height:auto;') %>
+                  </div>
+                <% end %>
+
+                <% if !homepage.imagetwo.empty? %>
+                  <div class="image-container">
+                  <%= image_tag(homepage.imagetwo, style: 'width:100%;height:auto;') %>
+                  </div>
+                <% end %>
+
+                <% if !homepage.imagethree.empty? %>
+                  <div class="image-container">
+                  <%= image_tag(homepage.imagethree, style: 'width:100%;height:auto;') %>
+                  </div>
+                <% end %>
+
+                </div>
+              <% else %>
+                <%= image_tag 'https://res.cloudinary.com/dllhqcpfw/image/upload/v1636952421/img-2_zpe9bv.jpg', style: 'width:100%;height:100%; object-fit: cover' %>
+              <% end %>
+            <% end %>
           </div>
         </div>
       </div>  <!--landing.s2-->
+    <% end %>
+  <% end %>
 
       <div class="currentEventsWrapper">
         <div class="currentEvents">
@@ -82,6 +120,7 @@
 
           <div>
             <p class="content"> <%= homepage.contactcontent %> </p>
+            
             <% if !homepage.emailone.empty? %>
               <p class="content"> <%= homepage.emailone %> </p>
             <% end %>
@@ -98,7 +137,10 @@
               <p class="content"> <%= homepage.emailfour %> </p>
             <% end %>
 
-            <p class="content"> <%= homepage.emailfive %> </p>
+            <% if !homepage.emailfive.empty? %>
+              <p class="content"> <%= homepage.emailfive %> </p>
+            <% end %>
+
           </div>
         <% end %>
       <% end %>
@@ -154,3 +196,5 @@ elmntToView.scrollIntoView();
 }
 
 </script>
+
+<%= javascript_include_tag('slick.js') %>

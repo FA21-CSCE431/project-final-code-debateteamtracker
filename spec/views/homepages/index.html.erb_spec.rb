@@ -13,7 +13,10 @@ RSpec.describe "homepages/index", type: :view do
         emailfour: "Emailfour",
         emailfive: "Emailfive",
         contact: "Contact",
-        contactcontent: "Contactcontent"
+        contactcontent: "Contactcontent",
+        imageone: "Imageone",
+        imagetwo: "Imagetwo",
+        imagethree: "Imagethree"
       ),
       Homepage.create!(
         about: "About",
@@ -25,7 +28,10 @@ RSpec.describe "homepages/index", type: :view do
         emailfour: "Emailfour",
         emailfive: "Emailfive",
         contact: "Contact",
-        contactcontent: "Contactcontent"
+        contactcontent: "Contactcontent",
+        imageone: "Imageone",
+        imagetwo: "Imagetwo",
+        imagethree: "Imagethree"
       )
     ])
   end
@@ -42,5 +48,8 @@ RSpec.describe "homepages/index", type: :view do
     assert_select "tr>td", text: "Emailfive".to_s, count: 2
     assert_select "tr>td", text: "Contact".to_s, count: 2
     assert_select "tr>td", text: "Contactcontent".to_s, count: 2
+    assert_select "tr>td", text: "Imageone".to_s, count: 2
+    assert_select "tr>td", text: "Imagetwo".to_s, count: 2
+    assert_select "tr>td", text: "Imagethree".to_s, count: 2
   end
 end

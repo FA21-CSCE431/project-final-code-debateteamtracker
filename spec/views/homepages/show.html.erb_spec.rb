@@ -12,7 +12,10 @@ RSpec.describe "homepages/show", type: :view do
       emailfour: "Emailfour",
       emailfive: "Emailfive",
       contact: "Contact",
-      contactcontent: "Contactcontent"
+      contactcontent: "Contactcontent",
+      imageone: "Imageone",
+      imagetwo: "Imagetwo",
+      imagethree: "Imagethree"
     ))
   end
 
@@ -28,5 +31,8 @@ RSpec.describe "homepages/show", type: :view do
     expect(rendered).to match(/Emailfive/)
     expect(rendered).to match(/Contact/)
     expect(rendered).to match(/Contactcontent/)
+    expect(rendered).to match(/Imageone/)
+    expect(rendered).to match(/Imagetwo/)
+    expect(rendered).to match(/Imagethree/)
   end
 end

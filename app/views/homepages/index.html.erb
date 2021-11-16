@@ -1,45 +1,92 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Homepages</h1>
+<div class="home-index">
+  <h1>Homepages</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>About</th>
-      <th>Aboutcontentone</th>
-      <th>Aboutcontenttwo</th>
-      <th>Emailone</th>
-      <th>Emailtwo</th>
-      <th>Emailthree</th>
-      <th>Emailfour</th>
-      <th>Emailfive</th>
-      <th>Contact</th>
-      <th>Contactcontent</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <% @homepages.each do |homepage| %>
+        <div class="intro">
+          <h2> Introduction Content </h2>
 
-  <tbody>
-    <% @homepages.each do |homepage| %>
-      <tr>
-        <td><%= homepage.about %></td>
-        <td><%= homepage.aboutcontentone %></td>
-        <td><%= homepage.aboutcontenttwo %></td>
-        <td><%= homepage.emailone %></td>
-        <td><%= homepage.emailtwo %></td>
-        <td><%= homepage.emailthree %></td>
-        <td><%= homepage.emailfour %></td>
-        <td><%= homepage.emailfive %></td>
-        <td><%= homepage.contact %></td>
-        <td><%= homepage.contactcontent %></td>
-        <td><%= link_to 'Show', homepage %></td>
-        <td><%= link_to 'Edit', edit_homepage_path(homepage) %></td>
-        <td><%= link_to 'Destroy', homepage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            <% if !homepage.about.empty? %>
+              <h3>About Title</h3>
+                <p><%= homepage.about %></p>
+            <% end %>
 
-<br>
+            <% if !homepage.aboutcontentone.empty? %>
+              <h3>About Content Information</h3>
+                <p><%= homepage.aboutcontentone %></p>
+            <% end %>
 
-<%= link_to 'New Homepage', new_homepage_path %>
+            <% if !homepage.aboutcontenttwo.empty? %>
+              <h3>Additional About Content Information </h3>
+                <p><%= homepage.aboutcontenttwo %></p>
+            <% end %>
+        </div>
+
+        <div class="carousel">
+          <h2> Carousel Images </h2>
+
+          <% if !homepage.imageone.empty? %>
+            <h3>Image One</h3>
+              <p><%= homepage.imageone %></p>
+          <% end %>
+
+          <% if !homepage.imagetwo.empty? %>
+            <h3>Image Two</h3>
+              <p><%= homepage.imagetwo %></p>
+          <% end %>
+
+          <% if !homepage.imagethree.empty? %>
+            <h3>Image Three</h3>
+              <p><%= homepage.imagethree %></p>
+          <% end %>
+        </div>
+
+        <div class="contact">
+          <h2> Contact Information </h2>
+
+            <% if !homepage.contact.empty? %>
+              <h3>Contact Section Title</h3>
+                <p><%= homepage.contact %></p>
+            <% end %>
+
+            <% if !homepage.contactcontent.empty? %>
+              <h3>Contact Section Description Text</h3>
+                <p><%= homepage.contactcontent %></p>
+            <% end %>
+
+            <% if !homepage.emailone.empty? %>
+              <h3>Email</h3>
+                <p><%= homepage.emailone %></p>
+            <% end %>
+
+            <% if !homepage.emailtwo.empty? %>
+              <h3>Email</h3>
+                <p><%= homepage.emailtwo %></p>
+            <% end %>
+
+            <% if !homepage.emailthree.empty? %>
+              <h3>Email</h3>
+                <p><%= homepage.emailthree %></p>
+            <% end %>
+
+            <% if !homepage.emailfour.empty? %>
+              <h3>Email</h3>
+                <p><%= homepage.emailfour %></p>
+            <% end %>
+
+            <% if !homepage.emailfive.empty? %>
+              <h3>Email</h3>
+                <p><%= homepage.emailfive %></p>
+            <% end %>
+        </div>
+
+          <p><%= link_to 'Show', homepage %></p>
+          <p><%= link_to 'Edit', edit_homepage_path(homepage) %></p>
+          <p><%= link_to 'Destroy', homepage, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      <% end %>
+
+  <br>
+
+  <%= link_to 'New Homepage', new_homepage_path %>
+</div> <!--home-index-->

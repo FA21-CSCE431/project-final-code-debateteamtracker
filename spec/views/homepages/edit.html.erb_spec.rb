@@ -12,7 +12,10 @@ RSpec.describe "homepages/edit", type: :view do
       emailfour: "MyString",
       emailfive: "MyString",
       contact: "MyString",
-      contactcontent: "MyString"
+      contactcontent: "MyString",
+      imageone: "MyString",
+      imagetwo: "MyString",
+      imagethree: "MyString"
     ))
   end
 
@@ -40,6 +43,12 @@ RSpec.describe "homepages/edit", type: :view do
       assert_select "input[name=?]", "homepage[contact]"
 
       assert_select "input[name=?]", "homepage[contactcontent]"
+
+      assert_select "input[name=?]", "homepage[imageone]"
+
+      assert_select "input[name=?]", "homepage[imagetwo]"
+
+      assert_select "input[name=?]", "homepage[imagethree]"
     end
   end
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :homepages
+  resources :homepages
   resources :members
   resources :groups
   devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }

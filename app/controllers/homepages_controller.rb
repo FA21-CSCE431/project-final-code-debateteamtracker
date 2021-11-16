@@ -64,6 +64,6 @@ class HomepagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def homepage_params
-      params.require(:homepage).permit(:about, :aboutcontentone, :aboutcontenttwo, :emailone, :emailtwo, :emailthree, :emailfour, :emailfive, :contact, :contactcontent)
+      params.require(:homepage).permit(:about, :aboutcontentone, :aboutcontenttwo, :emailone, :emailtwo, :emailthree, :emailfour, :emailfive, :contact, :contactcontent, :imageone, :imagetwo, :imagethree)
     end
 end
