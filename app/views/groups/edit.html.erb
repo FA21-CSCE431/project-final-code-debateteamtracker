@@ -1,6 +1,9 @@
-<h1>Editing Group</h1>
-
-<%= render 'form', group: @group %>
-
-<%= link_to 'Show', @group %> |
-<%= link_to 'Back', groups_path %>
+<div class="content-box groups-bg">
+  <%= link_to groups_path, class: "back-button" do %>
+    <p><i class='fas fa-angle-double-left'></i> Back </p>
+  <% end %>
+  <div class="crud-body">
+    <h1 class="crud-header">Editing mailing group</h1>
+    <%= render 'form', group: @group %>
+  </div>
+</div>

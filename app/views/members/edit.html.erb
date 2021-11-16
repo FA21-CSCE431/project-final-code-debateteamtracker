@@ -1,6 +1,9 @@
-<h1>Editing Member</h1>
-
-<%= render 'form', member: @member %>
-
-<%= link_to 'Show', @member %> |
-<%= link_to 'Back', members_path %>
+<div class="content-box">
+  <%= link_to members_path, class: "back-button" do %>
+    <p><i class='fas fa-angle-double-left'></i> Back </p>
+  <% end %>
+  <div class="crud-body">
+    <h1 class="crud-header">Editing member</h1>
+    <%= render 'form', member: @member %>
+  </div>
+</div>

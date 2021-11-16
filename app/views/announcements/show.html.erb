@@ -1,23 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="content-box announcements-bg">
+  <%= link_to announcements_path, class: "back-button" do %>
+    <p><i class='fas fa-angle-double-left'></i> Back </p>
+  <% end %>
+  <div class="crud-body">
+    <div class="show-box">
+      <h1 class="crud-header"><%= @announcement.title %></h1>
+      <div class="crud-flex" style="font-size: 20px; margin-bottom: 20px">
+        <p style="flex: 1">
+          <strong>Description:</strong>
+          <%= @announcement.description %>
+        </p>
+      </div>
+      <div class="crud-flex" style="font-size: 20px">
+        <p style="flex: 1">
+          <strong>Date:</strong>
+          <%= @announcement.date %>
+        </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @announcement.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @announcement.description %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @announcement.date %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @announcement.author %>
-</p>
-
-<%= link_to 'Back', announcements_path %>
+        <p style="flex: 1">
+          <strong>Author:</strong>
+          <%= @announcement.author %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

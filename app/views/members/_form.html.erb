@@ -29,16 +29,29 @@
       <%= form.number_field :points, class: "crud-input" %>
     </div>
 
-    <div class="field" style="flex: 1">
-      <%= form.radio_button :priority, 1 %>
-      <%= form.label :priority, 'Member - 1', :value => 1 %>
-      <%= form.radio_button :priority, 2 %>
-      <%= form.label :priority, 'Secondary Admin - 2', :value => 2 %>
-      <%= form.radio_button :priority, 3 %>
-      <%= form.label :priority, 'Primary Admin - 3', :value => 3 %>
+    <div class="field radio-select" style="flex: 1">
+      <div class="radio">
+        <%= form.radio_button :priority, 3, class: "radio" %>
+      </div>
+      <div class="radio-label">
+        <%= form.label :priority, 'Primary Admin', :value => 3 %>
+      </div>
+      <div class="radio">
+        <%= form.radio_button :priority, 2 %>
+      </div>
+      <div class="radio-label">
+      <%= form.label :priority, 'Secondary Admin', :value => 2 %>
+      </div>
+      <div class="radio">
+        <%= form.radio_button :priority, 1 %>
+      </div>
+      <div class="radio-label">
+        <%= form.label :priority, 'Member', :value => 1 %>
+      </div>
+
     </div>
   </div> <!-- crud-flex -->
-  
+
   <div class="crud-flex">
     <div class="actions crud-submit">
       <%= form.submit class: "submit-button" %>

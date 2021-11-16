@@ -1,6 +1,7 @@
-<div class="content-box">
-  <%= link_to 'Back', points_events_path, class: "back-button" %>
-
+<div class="content-box points-events-bg">
+  <%= link_to points_events_path, class: "back-button" do %>
+    <p><i class='fas fa-angle-double-left'></i> Back </p>
+  <% end %>
   <div class="crud-body">
     <h1 class="crud-header">New Points Event</h1>
     <%= render 'form', points_event: @points_event %>

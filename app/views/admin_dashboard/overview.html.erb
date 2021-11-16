@@ -1,45 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="content-box profile-bg">
+  <p id="notice"><%= notice %></p>
 
-<h1>Admin Overview</h1>
-<table>
-  <center>
-    <br>
-    <br>
-    <img src=<%= current_admin.avatar_url %>>
-    <br>
-    <br>
-  </center>
-  <thead>
-    <tr>
-      <th>Page</th>
-      <th>Description</th>
-    </tr>
-  </thead>
+  <div class="profile-body">
+    <h1 class="profile-header">Admin Overview</h1>
+    <table class="crud-table">
+      <center>
 
-  <tbody>
-      <tr>
-        <td><%= link_to 'Member Create', members_path %></td>
-        <td>Add and edit Debate Team Members from this page</td>
-      </tr>
-      <tr>
-        <td><%= link_to 'Announcement Create', announcements_path %></td>
-        <td>Create announcements to be sent through email from this page</td>
-      </tr>
-      <tr>
-        <td><%= link_to 'Points Categories', points_events_path %></td>
-        <td>Create new points categories and increase member points from this page</td>
-      </tr>
-      <tr>
-        <td><%= link_to 'Calendar Events', events_path %></td>
-        <td>Edit Calendar events from this page</td>
-      </tr>
-      <tr>
-        <td><%= link_to 'Mailing Groups', groups_path %></td>
-        <td>Edit mailing groups</td>
-      </tr>
-      <tr>
-        <td><%= link_to 'Edit Homepage', homepages_path %></td>
-        <td>Edit the contents of the homepage </td>
-      </tr>
-  </tbody>
-</table>
+        <img src=<%= current_admin.avatar_url %> class="avatar">
+
+      </center>
+
+      <tbody>
+          <tr>
+            <td><%= link_to 'Member Create', members_path, class:"crud-show" %></td>
+            <td>Add and edit Debate Team Members from this page</td>
+          </tr>
+          <tr>
+            <td><%= link_to 'Announcement Create', announcements_path, class:"crud-show" %></td>
+            <td>Create announcements to be sent through email from this page</td>
+          </tr>
+          <tr>
+            <td><%= link_to 'Points Categories', points_events_path, class:"crud-show" %></td>
+            <td>Create new points categories and increase member points from this page</td>
+          </tr>
+          <tr>
+            <td><%= link_to 'Calendar Events', events_path, class:"crud-show" %></td>
+            <td>Edit Calendar events from this page</td>
+          </tr>
+          <tr>
+            <td><%= link_to 'Mailing Groups', groups_path, class:"crud-show" %></td>
+            <td>Edit mailing groups</td>
+          </tr>
+          <tr>
+            <td><%= link_to 'Edit Homepage', homepages_path, class:"crud-show" %></td>
+            <td>Edit the contents of the homepage </td>
+          </tr>
+      </tbody>
+    </table>
+  </div> <!-- profile-body -->
+</div> <!-- content-box -->

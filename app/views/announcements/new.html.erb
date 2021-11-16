@@ -1,6 +1,7 @@
-<div class="content-box">
-  <%= link_to 'Back', announcements_path, class: "back-button" %>
-
+<div class="content-box announcements-bg">
+  <%= link_to announcements_path, class: "back-button" do %>
+    <p><i class='fas fa-angle-double-left'></i> Back </p>
+  <% end %>
   <div class="crud-body">
     <h1 class="crud-header">New Announcement</h1>
     <%= render 'form', announcement: @announcement %>

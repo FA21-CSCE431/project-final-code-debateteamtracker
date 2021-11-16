@@ -1,24 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="content-box member-bg">
+  <%= link_to members_path, class: "back-button" do %>
+    <p><i class='fas fa-angle-double-left'></i> Back </p>
+  <% end %>
+  <div class="crud-body">
+    <div class="show-box">
+      <h1 class="crud-header"><%= @member.name %></h1>
+      <div class="crud-flex" style="font-size: 20px; margin-bottom: 20px">
+        <p style="flex: 1">
+          <strong>Name:</strong>
+          <%= @member.name %>
+        </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @member.email %>
-</p>
+        <p style="flex: 1">
+          <strong>Email:</strong>
+          <%= @member.email %>
+        </p>
+      </div>
+      <div class="crud-flex" style="font-size: 20px">
+        <p style="flex: 1">
+          <strong>Points:</strong>
+          <%= @member.points %>
+        </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @member.name %>
-</p>
-
-<p>
-  <strong>Points:</strong>
-  <%= @member.points %>
-</p>
-
-<p>
-  <strong>Priority:</strong>
-  <%= @member.priority %>
-</p>
-
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', members_path %>
+        <p style="flex: 1">
+          <strong>Priority:</strong>
+          <%= @member.priority %>
+        </p>
+      </div>
+      <div class="crud-flex" style="margin-top: 40px">
+        <%= link_to 'Edit', edit_member_path(@member), class: "crud-button" %>
+      </div>
+    </div>
+  </div>
+</div>

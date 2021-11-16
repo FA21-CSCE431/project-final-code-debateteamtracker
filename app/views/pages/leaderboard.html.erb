@@ -1,51 +1,53 @@
-<div class="content-box">
-  <div class="crud-body">
-    <h1 class="crud-header">Leaderboard</h1>
+<p id="notice"><%= notice %></p>
+
+<div class="content-box leaderboard-bg">
+  <div class="leaderboard-body">
+    <h1 class="leaderboard-title">Leaderboard</h1>
 
     <% if !current_admin.nil?%>
-        <% if Member.exists?(['email LIKE ? AND priority = 1', "%#{current_admin.email}"]) %>
-            <h3>Your Points</h3>
-            <table class="pointsEarned">
-                <thead>
-                    <tr>
-                        <th class="event">Category</th>
-                        <th>Points</th>
-                    </tr>
-                </thead>
+      <% if Member.exists?(['email LIKE ? AND priority = 1', "%#{current_admin.email}"]) %>
+        <h3 class="leaderboard-title">Your Points</h3>
+        <table class="pointsEarned">
+          <thead>
+            <tr>
+              <th class="event">Category</th>
+              <th>Points</th>
+            </tr>
+          </thead>
 
-                <tbody>
+          <tbody>
 
 
-                    <% @entries.each do |entry| %>
-                        <tr>
-                            <td class="name"><%= entry.name %></td>
-                            <td><%= entry.value %></td>
-                        </tr>
-                    <% end %>
-                <tbody>
-            </table>
-        <% end %>
+            <% @entries.each do |entry| %>
+              <tr>
+                <td class="name"><%= entry.name %></td>
+                <td><%= entry.value %></td>
+              </tr>
+            <% end %>
+          <tbody>
+        </table>
+      <% end %>
     <% end %>
 
-    <h3>Top 10 Members</h3>
+    <h2 class="leaderboard-title">Top 10 Members</h2>
     <table class="leaderboard">
-        <thead>
-            <tr>
-                <th class="name">Name</th>
-                <th>Points</th>
-            </tr>
-        </thead>
+      <thead>
+        <tr>
+          <th>Ranking</th>
+          <th class="name">Name</th>
+          <th>Points</th>
+        </tr>
+      </thead>
 
-        <tbody>
-
-
-            <% @members.each do |member| %>
-                <tr>
-                    <td class="name"><%= member.name %></td>
-                    <td><%= member.points %></td>
-                </tr>
-            <% end %>
-        <tbody>
+      <tbody>
+        <% @members.each_with_index do |member, index| %>
+          <tr>
+            <td> <%= index + 1 %> </td>
+            <td class="name"><%= member.name %></td>
+            <td><%= member.points %></td>
+          </tr>
+        <% end %>
+      <tbody>
     </table>
-  </div>
-</div>
+  </div> <!-- leaderboard-body -->
+</div> <!-- content-box -->

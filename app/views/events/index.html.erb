@@ -1,14 +1,13 @@
-<h1>Calendar</h1>
-<div class="events index">
-  
-    <% if !current_admin.nil?%>
-     <% if Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"]) %>
-        <%= link_to("Add New Event", new_event_path, :class => 'action new', :method => :get) %>
-        <%= link_to("Delete All Events", delete_all_events_path, :class => 'action delete_all') %>
-      <% end %>
+
+<div class="content-box events-bg">
+  <% if !current_admin.nil?%>
+   <% if Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"]) %>
+      <%= link_to("Add New Event", new_event_path, :class => 'action new', :method => :get) %>
+      <%= link_to("Delete All Events", delete_all_events_path, :class => 'action delete_all') %>
     <% end %>
-  <div class="crud-body">
-    <h1 class="crud-header">Events</h1>
+  <% end %>
+  <div class="crud-body" style="background-color: rgba(256, 256, 256, 1);">
+    <h1 class="crud-header">Calendar</h1>
 
      <%= month_calendar(events: @events) do |date, events| %>
   <%= date.day %>
@@ -53,10 +52,10 @@
         </tr>
         <%end%>
       <% end %>
-    
 
 
-   
+
+
     <table class="listing" summary="Event list">
       <h2>Past Events</h2>
       <tr class="header">
@@ -85,7 +84,7 @@
       <% end %>
       <% end %>
         <% end %>
-  
+
 
 
 

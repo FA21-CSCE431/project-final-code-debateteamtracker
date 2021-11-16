@@ -1,11 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to "Sign Out", destroy_admin_session_path %>
-<div class="content-box">
+<div class="content-box points-events-bg">
   <div class="crud-body">
     <h1 class="crud-header">Points Events</h1>
 
-    <table>
+    <table class="crud-table">
       <thead>
         <tr>
           <th>Name</th>
@@ -15,14 +14,15 @@
       </thead>
 
       <tbody>
-      
+
         <% @points_events.each do |points_event| %>
           <tr>
-            <td><%= points_event.name %></td>
-            <td><%= points_event.value %></td>
-            <td><%= button_to 'Show', points_event, method: :get %></td>
-            <td><%= button_to 'Edit', edit_points_event_path(points_event), method: :get %></td>
-            <td><%= button_to 'Delete', points_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td style="width: 60%;">
+              <%= link_to points_event.name, points_event, class:"crud-show" %>
+            </td>
+            <td style="width: 10%;"><%= points_event.value %></td>
+            <td><%= button_to 'Edit', edit_points_event_path(points_event), method: :get, class: "crud-button" %></td>
+            <td><%= button_to 'Delete', points_event, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete-button" %></td>
           </tr>
         <% end %>
       </tbody>

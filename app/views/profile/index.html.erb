@@ -1,34 +1,38 @@
-<center>
-  <br>
-  <h1> Welcome to your Profile overview</h1>
-  <br>
-  <h2>
+<div class="content-box profile-bg">
+  <div class="profile-body">
+    <center>
       <br>
-      <img src=<%= current_admin.avatar_url %>>
+      <h1> Welcome to your Profile overview</h1>
       <br>
-      <strong> Your total Points: </strong>
-      <br>
-      <%= @member.points %>
-      <br>
-      <br>
-      <table class="pointsEarned">
-        <thead>
-            <tr>
-                <th class="event">Category</th>
-                <th>Points</th>
-            </tr>
-        </thead>
-
-        <tbody>
-
-
-            <% @entries.each do |entry| %>
+      <h2>
+          <br>
+          <img src=<%= current_admin.avatar_url %>>
+          <br>
+          <strong> Your total Points: </strong>
+          <br>
+          <%= @member.points %>
+          <br>
+          <br>
+          <table class="pointsEarned">
+            <thead>
                 <tr>
-                    <td class="name"><%= entry.name %></td>
-                    <td><%= entry.value %></td>
+                    <th class="event">Category</th>
+                    <th>Points</th>
                 </tr>
-            <% end %>
-        <tbody>
-    </table>
-  </h2>
-</center>
+            </thead>
+
+            <tbody>
+
+
+                <% @entries.each do |entry| %>
+                    <tr>
+                        <td class="name"><%= entry.name %></td>
+                        <td><%= entry.value %></td>
+                    </tr>
+                <% end %>
+            <tbody>
+        </table>
+      </h2>
+    </center>
+  </div> <!-- profile-body -->
+</div> <!-- content-box -->

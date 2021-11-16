@@ -1,0 +1,33 @@
+<%= form_with(model: image) do |form| %>
+  <% if image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+      <ul>
+        <% image.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="crud-flex">
+    <div class="field" style="flex: 1">
+      <%= form.label :name, class: "crud-text" %>
+      <%= form.text_field :name, class: "crud-input" %>
+    </div>
+  </div> <!-- crud flex -->
+
+  <div class="crud-flex">
+    <div class="field" style="flex: 1">
+      <%= form.label :pic, class: "crud-text" %>
+      <%= form.file_field :pic, class: "crud-upload" %>
+    </div>
+  </div> <!-- crud-flex -->
+
+  <div class="crud-flex">
+    <div class="actions crud-submit">
+      <%= form.submit class: "submit-button" %>
+    </div>
+  </div> <!-- crud flex -->
+<% end %>
