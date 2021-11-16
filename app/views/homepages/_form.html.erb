@@ -1,0 +1,110 @@
+<%= form_with(model: homepage) do |form| %>
+  <% if homepage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(homepage.errors.count, "error") %> prohibited this homepage from being saved:</h2>
+
+      <ul>
+        <% homepage.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="homepage-wrapper">
+    <div class="introduction">
+      <h3> Introduction Content </h3>
+      <div class="field">
+        <%= form.label :about, 'About Section Title' %>
+        <br>
+        <%= form.text_field :about %>
+      </div>
+
+      <div class="field">
+        <%= form.label :aboutcontentone, 'About Content' %>
+        <br>
+        <%= form.text_area :aboutcontentone, :cols => 10, :rows => 20, class:'bigger-box' %>
+      </div>
+
+      <div class="field">
+        <%= form.label :aboutcontenttwo, 'About Additional Content' %>
+        <br>
+        <%= form.text_area :aboutcontenttwo, :cols => 10, :rows => 20, class:'bigger-box' %>
+      </div>
+    </div> <!--introduction-->
+
+    <div class="carousel section">
+      <h3> Carousel Images </h3>
+      <div class="field">
+        <%= form.label :imageone, 'Image Carousel URL'%>
+        <br>
+        <%= form.text_field :imageone %>
+      </div>
+
+      <div class="field">
+        <%= form.label :imagetwo, 'Image Carousel URL'%>
+        <br>
+        <%= form.text_field :imagetwo %>
+      </div>
+
+      <div class="field">
+        <%= form.label :imagethree, 'Image Carousel URL' %>
+        <br>
+        <%= form.text_field :imagethree %>
+      </div>
+    </div> <!-- carousel -->
+
+    <div class="bottom content">
+      <h3> Contact Information </h3>
+
+      
+      <div class="field">
+        <%= form.label :contact, 'Contact Section Title'%>
+        <br>
+        <%= form.text_field :contact %>
+      </div>
+
+      <div class="field">
+        <%= form.label :contactcontent, 'Contact Section Content' %>
+        <br>
+        <%= form.text_area :contactcontent, :cols => 10, :rows => 20, class:'bigger-box' %>
+      </div>
+
+      <div class="field">
+        <%= form.label :emailone, 'Email' %>
+        <br>
+        <%= form.text_field :emailone %>
+      </div>
+
+      <div class="field">
+        <%= form.label :emailtwo, 'Email' %>
+        <br>
+        <%= form.text_field :emailtwo %>
+      </div>
+
+      <div class="field">
+        <%= form.label :emailthree, 'Email' %>
+        <br>
+        <%= form.text_field :emailthree %>
+      </div>
+
+      <div class="field">
+        <%= form.label :emailfour, 'Email' %>
+        <br>
+        <%= form.text_field :emailfour %>
+      </div>
+
+      <div class="field">
+        <%= form.label :emailfive, 'Email' %>
+        <br>
+        <%= form.text_field :emailfive %>
+      </div>
+        
+    </div> <!--bottom content-->
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  </div> <!-- homepage-wrapper -->
+<% end %>

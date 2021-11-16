@@ -8,6 +8,27 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+require("jquery")
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+//= require jquery.slick
+//= require jquery
+//= require jquery_ujs
+//= require_tree .
+//= require bootstrap
+
+$(function() {
+    $('.your-class').slick({
+        dots: true, //Show dot navigation below slides
+        autoplay: true, //auto play
+        arrows: false,
+        autoplaySpeed: 4000 //Playback speed
+    });
+  });
+
+
+
+

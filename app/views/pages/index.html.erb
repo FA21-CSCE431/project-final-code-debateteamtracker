@@ -1,4 +1,8 @@
-<div class="wrapper">
+<% content_for :head do %>
+  <meta name="turbolinks-cache-control" content="no-cache">
+<% end %>
+
+<div class="wrapper" data-turbolinks="false">
 
   <div class="max-width">
     <div class="landing_s1 sections">
@@ -10,8 +14,16 @@
            <!--<h3 class="subtitle"> Place holder Header / Description of the club </h3>-->
             </div> <!-- underline -->
             <div class="button-flex">
-              <div class="button2"> <p> Learn More </p> </div>
-              <div class="button2"> <p> About Us </p> </div>
+              <% @homepages.each do |homepage| %>
+                
+                <% if !homepage.about.empty? %>
+                  <div class="button2" onclick="myFunction()"> <p> About Us </p> </div>
+                <% end %>
+
+                <% if @events.exists? %>
+                  <div class="button2" onclick="myFunction2()"> <p> Upcoming Events </p> </div>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -24,55 +36,117 @@
         </div>
       </div>
 
+  <% @homepages.each do |homepage| %>
+    <% if !homepage.about.empty? %>
       <div class="landing_s2 sections" id="scroll_stop">
         <div class="seventy">
           <div class="about">
             <div class="left-line"></div>
-            <h3> About Us </h3>
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
-            do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis  nostrud exercitation ullamco laboris 
-            nisi ut a liquip ex ea commodo consequat.
-            ullamco laboris nisi ut a liquip ex ea commodo consequat </p>
+            <!--<h3> About Us </h3>-->
+            <!--<p> The Texas A&M Speech and Debate Team started as a student-run, student-funded, and student-oriented organization to support speech and debate activities for A&M students. Today, the team has grown as an organization and is sponsored by the College of Liberal Arts. The team competes in 11 individual speaking and acting events, as well as Parliamentary and Lincoln-Douglas styles debate. Our decree is to compete at a national level while impacting both our community and the world at a grassroots level. It’s not enough to just give empty speeches at TAMU, instead we strive to turn our debate experience and our speech topics into real movements and community involvement that we feel both betters the competition, the community, and ourselves. </p>-->
+            
+              <h3> <%= homepage.about %> </h3>
+              <div>
+                <p><%= homepage.aboutcontentone %></p>
+
+                <% if !homepage.aboutcontenttwo.empty? %>
+                  <p><%= homepage.aboutcontenttwo %></p>
+                <% end %>
+              </div>
+
             <div class="right-line"></div>
           </div>
           <div class="about-image">
-              <!--<p> place holder </p>-->
+            <% @homepages.each do |homepage| %>
+              <% if !homepage.imageone.empty? or !homepage.imagetwo.empty? or !homepage.imagethree.empty?%>
+                <div class="your-class">
+
+                <% if !homepage.imageone.empty? %>
+                  <div class="image-container">
+                    <%= image_tag(homepage.imageone, style: 'width:100%;height:auto;') %>
+                  </div>
+                <% end %>
+
+                <% if !homepage.imagetwo.empty? %>
+                  <div class="image-container">
+                  <%= image_tag(homepage.imagetwo, style: 'width:100%;height:auto;') %>
+                  </div>
+                <% end %>
+
+                <% if !homepage.imagethree.empty? %>
+                  <div class="image-container">
+                  <%= image_tag(homepage.imagethree, style: 'width:100%;height:auto;') %>
+                  </div>
+                <% end %>
+
+                </div>
+              <% else %>
+                <%= image_tag 'https://res.cloudinary.com/dllhqcpfw/image/upload/v1636952421/img-2_zpe9bv.jpg', style: 'width:100%;height:100%; object-fit: cover' %>
+              <% end %>
+            <% end %>
           </div>
         </div>
       </div>  <!--landing.s2-->
+    <% end %>
+  <% end %>
 
-      <div class="currentEvents">
-            <div class="img-cover max-width-body">
-              <h4> Current Events </h4>
-        
-              <div class="flex-box flex3">
-                <div> 
-                  <h3 class="item-title"> Title </h3>
-                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p> 
-                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p> 
+      <div class="currentEventsWrapper">
+        <div class="currentEvents">
+            <% if @events.exists? %>
+              <div class="img-cover max-width-body" id="scroll_stop2">
+                <h4> Current Events </h4>
+          
+                <div class="flex-box flex3"> 
+                    <% @events.each do |event| %>
+                      <div>
+                        <h3 class="item-title"><%= event.name %></h3>
+                        <p><%= event.description %></p>
+                      </div>
+                    <% end %>
                 </div>
 
-                <div> 
-                  <h3 class="item-title"> Title </h3>
-                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p> 
-                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p> 
-                </div>
-
-                <div> 
-                  <h3 class="item-title"> Title </h3>
-                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p> 
-                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p> 
-                </div>
               </div>
-
-            </div>
+            <% end %>
+        </div>
       </div>
 
+      <% if @homepages.exists? %>
       <div class="landing_s3 sections">
       <div class="max-width-body">
-        <h2> Let's Get in Contact </h2>
-        <div class="flex-box flex2">
+      
+        <% @homepages.each do |homepage| %>
+          <h2 class="contact_title"> <%= homepage.contact %> </h2>
+          <div class="left-line2"></div>
+
+          <div>
+            <p class="content"> <%= homepage.contactcontent %> </p>
+            
+            <% if !homepage.emailone.empty? %>
+              <p class="content"> <%= homepage.emailone %> </p>
+            <% end %>
+
+            <% if !homepage.emailtwo.empty? %>
+              <p class="content"> <%= homepage.emailtwo %> </p>
+            <% end %>
+
+            <% if !homepage.emailthree.empty? %>
+              <p class="content"> <%= homepage.emailthree %> </p>
+            <% end %>
+
+            <% if !homepage.emailfour.empty? %>
+              <p class="content"> <%= homepage.emailfour %> </p>
+            <% end %>
+
+            <% if !homepage.emailfive.empty? %>
+              <p class="content"> <%= homepage.emailfive %> </p>
+            <% end %>
+
+          </div>
+        <% end %>
+      <% end %>
+
+        <!--<h2> Let's Get in Contact </h2>-->
+        <!--<div class="flex-box flex2">
           <div>
             <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
           </div>
@@ -80,16 +154,28 @@
           <div>
             <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
           </div>
-        </div> <!--flex-box flex2-->
+        </div> -->
+
         </div> <!--max-width-body-->
       </div> <!--landing.s3-->
 
     <div class="footer">
       <div class="flex-box flex4">
-          <div class="icon"> </div>
-          <div class="icon"> </div>
-          <div class="icon"> </div>
-          <div class="icon"> </div>
+          <div class="icon"> 
+            <a href="https://www.linkedin.com/in/tamu-speech-and-debate-887269225/" class="fa fa-linkedin"></a>
+          </div>
+
+          <div class="icon">
+            <a href="https://www.facebook.com/tamuspeechdebate" class="fa fa-facebook"></a>
+          </div>
+
+          <div class="icon">
+          <a href="https://twitter.com/tamuspeech?lang=en" class="fa fa-twitter"></a>
+          </div>
+
+          <div class="icon">
+          <a href="https://www.instagram.com/tamu_debate/?hl=en" class="fa fa-instagram"></a>
+          </div>
       </div> <!--flex-box flex4-->
     </div> <!--footer-->
 
@@ -104,4 +190,11 @@ elmntToView.scrollIntoView();
 
 const images = document.querySelectorAll('.lazyload');
 
+function myFunction2() {
+  var elmntToView = document.getElementById("scroll_stop2");
+elmntToView.scrollIntoView(); 
+}
+
 </script>
+
+<%= javascript_include_tag('slick.js') %>

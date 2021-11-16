@@ -7,61 +7,166 @@
     <%= csrf_meta_tags %> <%= csp_meta_tag %>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="/assets/slick/slick.css"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="/assets/slick/slick-theme.css"/>-->
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
       rel="stylesheet"
     />
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all',
     'data-turbolinks-track': 'reload' %> <%= javascript_pack_tag 'application',
     'data-turbolinks-track': 'reload' %>
+    <% if content_for?(:head) %>
+    <%= yield(:head) %>
+    <% end %>
+
+    <% if action_name == "new" %> <meta name="turbolinks-cache-control" content="no-preview"> <% end %>
     <style>
       .flash__alert {
         color: red;
       }
+
       .flash__notice {
         color: blue;
       }
+      
       .flash__success {
         color: green;
       }
     </style>
   </head>
 
-  <body>
+  <body> <%= "data-no-turbolinks='true'".html_safe if controller_name=="pages"%>
     <div class="navbar">
       <div class="left-navbar">
         <div class="child_logo"><%= image_tag("logo.png", :size => "60x60") %></div>
       </div> <!-- left-navbar -->
+
+	  
       <div class="right-navbar">
-        <div class="link">
+
+        <div class="link-box" data-turbolinks="false">
           <%= link_to "Home", root_path, class: "link" %>
         </div>
-        <div class="link">
+		
+        <div class="link-box">
           <%= link_to "Leaderboard", pages_leaderboard_path, class: "link" %>
         </div>
-        <div class="link">
+		
+        <div class="link-box">
+          <%= link_to "Announcements", announcements_path, class: "link" %>
+        </div>
+
+        <div class="link-box">
           <%= link_to "Calendar", events_path, class: "link" %>
         </div>
-        <% if current_admin.nil?%>
-          <div class="link"><%= link_to "Sign in with Google",
-          admin_google_oauth2_omniauth_authorize_path, method: :post %></div>
-        <% end %>
+		
         <% if !current_admin.nil? %>
           <% if Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"]) %>
-            <div class="link "><%= link_to "Members", members_path %></div>
+            <div class="link-box">
+              <%= link_to "Members", members_path, class: "link" %>
+            </div>
           <% end %>
-          <div class="link">
-            <%= link_to "Profile", profile_index_path, class: "link" %>
-          </div>
-          <div class="link"><%= link_to "Sign out",
-          destroy_admin_session_path %></div>
+
+            <div class="link-box">
+              <%= link_to "Profile", profile_index_path, class: "link" %>
+            </div>
+          
+            <div class="link-box">
+              <%= link_to "Sign out",
+              destroy_admin_session_path %>
+            </div>
         <% end %>
-      </div>
-      <!-- navbar -->
+		
+      <% if current_admin.nil?%>
+        <div class="link-box">
+          <%= link_to "Sign in",
+          admin_google_oauth2_omniauth_authorize_path, 
+          method: :post %>
+        </div>
+      <% end %>
+		
+      </div> 
     </div>
+
+    <div class="mobile-navbar">
+
+    
+    <div class="mobile-right" onclick="myFunctionMenu()">
+      <div class="link-box link-box-menu">
+        <!--<p class="right-text"> Menu </p>-->
+          <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div class="drop-down" id="drop-down" style="display: none">
+    <div class="link-box link-box-1">
+      <%= link_to "Home", root_path, class: "link" %>
+    </div>
+
+    <div class="link-box">
+      <%= link_to "Leaderboard", pages_leaderboard_path, class: "link" %>
+    </div>
+
+    <div class="link-box">
+      <%= link_to "Announcements", announcements_path, class: "link" %>
+    </div>
+
+    <!--<div class="link-box">
+      <%= link_to "Calendar", events_path, class: "link" %>
+    </div>-->
+
+    <% if !current_admin.nil? %>
+      <!--<% if Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"]) %>
+        <div class="link-box">
+          <%= link_to "Members", members_path, class: "link" %>
+        </div>
+      <% end %>-->
+
+        <div class="link-box">
+          <%= link_to "Profile", profile_index_path, class: "link" %>
+        </div>
+      
+        <div class="link-box link-box-2">
+          <%= link_to "Sign out",
+          destroy_admin_session_path %>
+        </div>
+    <% end %>
+
+  <% if current_admin.nil?%>
+    <div class="link-box link-box-2">
+      <%= link_to "Sign in",
+      admin_google_oauth2_omniauth_authorize_path, 
+      method: :post %>
+    </div>
+  <% end %>
+  </div>
+
+  </div> 
+
+    <div class="top-padding"></div>
     <% if flash.any? %> <% flash.each do |key, value| -%>
-    <section class="flash flash__<%= key %>"><%= value.html_safe %></section>
-    <% end -%> <% end %> <%= yield %>
+      <section class="flash flash__<%= key %>"><%= value.html_safe %></section>
+      <% end -%> <% end %> <%= yield %>
+
+      <script>
+
+function myFunctionMenu() {
+  if (document.getElementById("drop-down").style.display == "none") {
+  document.getElementById("drop-down").style.display = "block";
+  }
+else{
+  document.getElementById("drop-down").style.display = "none";
+}
+}
+  </script>
+
   </body>
 </html>
