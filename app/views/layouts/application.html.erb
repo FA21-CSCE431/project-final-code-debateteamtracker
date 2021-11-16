@@ -35,30 +35,30 @@
       .flash__notice {
         color: blue;
       }
-      
+
       .flash__success {
         color: green;
       }
     </style>
   </head>
 
-  <body> <%= "data-no-turbolinks='true'".html_safe if controller_name=="pages"%>
+  <body>
     <div class="navbar">
       <div class="left-navbar">
         <div class="child_logo"><%= image_tag("logo.png", :size => "60x60") %></div>
       </div> <!-- left-navbar -->
 
-	  
+
       <div class="right-navbar">
 
         <div class="link-box" data-turbolinks="false">
           <%= link_to "Home", root_path, class: "link" %>
         </div>
-		
+
         <div class="link-box">
           <%= link_to "Leaderboard", pages_leaderboard_path, class: "link" %>
         </div>
-		
+
         <div class="link-box">
           <%= link_to "Announcements", announcements_path, class: "link" %>
         </div>
@@ -66,7 +66,7 @@
         <div class="link-box">
           <%= link_to "Calendar", events_path, class: "link" %>
         </div>
-		
+
         <% if !current_admin.nil? %>
           <% if Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"]) %>
             <div class="link-box">
@@ -77,31 +77,31 @@
             <div class="link-box">
               <%= link_to "Profile", profile_index_path, class: "link" %>
             </div>
-          
+
             <div class="link-box">
               <%= link_to "Sign out",
               destroy_admin_session_path %>
             </div>
         <% end %>
-		
+
       <% if current_admin.nil?%>
         <div class="link-box">
           <%= link_to "Sign in",
-          admin_google_oauth2_omniauth_authorize_path, 
+          admin_google_oauth2_omniauth_authorize_path,
           method: :post %>
         </div>
       <% end %>
-		
-      </div> 
+
+      </div>
     </div>
 
     <div class="mobile-navbar">
 
-    
+
     <div class="mobile-right" onclick="myFunctionMenu()">
       <div class="link-box link-box-menu">
         <!--<p class="right-text"> Menu </p>-->
-          <div></div>
+        <div></div>
         <div></div>
         <div></div>
       </div>
@@ -134,7 +134,7 @@
         <div class="link-box">
           <%= link_to "Profile", profile_index_path, class: "link" %>
         </div>
-      
+
         <div class="link-box link-box-2">
           <%= link_to "Sign out",
           destroy_admin_session_path %>
@@ -144,30 +144,32 @@
   <% if current_admin.nil?%>
     <div class="link-box link-box-2">
       <%= link_to "Sign in",
-      admin_google_oauth2_omniauth_authorize_path, 
+      admin_google_oauth2_omniauth_authorize_path,
       method: :post %>
     </div>
   <% end %>
   </div>
 
-  </div> 
+  </div>
 
     <div class="top-padding"></div>
-    <% if flash.any? %> <% flash.each do |key, value| -%>
-      <section class="flash flash__<%= key %>"><%= value.html_safe %></section>
-      <% end -%> <% end %> <%= yield %>
+    <% if flash.any? %>
+      <% flash.each do |key, value| -%>
+        <section class="flash flash__<%= key %>"><%= value.html_safe %></section>
+      <% end -%>
+    <% end %>
+    <%= yield %>
 
-      <script>
-
-function myFunctionMenu() {
-  if (document.getElementById("drop-down").style.display == "none") {
-  document.getElementById("drop-down").style.display = "block";
-  }
-else{
-  document.getElementById("drop-down").style.display = "none";
-}
-}
-  </script>
+    <script>
+      function myFunctionMenu() {
+        if (document.getElementById("drop-down").style.display == "none") {
+          document.getElementById("drop-down").style.display = "block";
+        }
+        else {
+          document.getElementById("drop-down").style.display = "none";
+        }
+      }
+    </script>
 
   </body>
 </html>

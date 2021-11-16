@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 2021_11_15_051707) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-<<<<<<< HEAD
   create_table "homepages", force: :cascade do |t|
     t.string "about"
     t.string "aboutcontentone"
@@ -93,10 +92,12 @@ ActiveRecord::Schema.define(version: 2021_11_15_051707) do
     t.string "imageone"
     t.string "imagetwo"
     t.string "imagethree"
-=======
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "images", force: :cascade do |t|
     t.string "name"
->>>>>>> 14f0700 (Group index format and Annoucement page fixes and Profile formatting)
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
