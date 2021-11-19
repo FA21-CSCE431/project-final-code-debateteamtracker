@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# EventsController
 class EventsController < ApplicationController
   def index
     @events = Event.all
@@ -26,7 +29,6 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
-   
   end
 
   def update
@@ -50,11 +52,12 @@ class EventsController < ApplicationController
 
   def delete_all
     Event.delete_all
-    flash[:notice] = "You have removed all results!"
+    flash[:notice] = 'You have removed all results!'
     redirect_to(events_path)
   end
 
   private
+
   def event_params
     params.require(:event).permit(:name, :location, :start_time, :end_time, :description)
   end

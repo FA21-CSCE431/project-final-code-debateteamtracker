@@ -1,3 +1,5 @@
-module EmailHelper
+# frozen_string_literal: true
 
-end 
+# email
+module EmailHelper
+end

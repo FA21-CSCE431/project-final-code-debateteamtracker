@@ -1,10 +1,15 @@
+# frozen_string_literal: true
+
+# GroupsController
 class GroupsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_group, only: %i[ show edit update destroy ]
+  before_action :set_group, only: %i[show edit update destroy]
   before_action :authenticate_permission
 
   def authenticate_permission
-    redirect_to '/', alert: 'Not authorized. This email does not have admin permissions' unless Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"])
+    redirect_to '/', alert: 'Not authorized. This email does not have admin permissions' unless Member.exists?([
+                                                                                                                 'email LIKE ? AND priority = 3', "%#{current_admin.email}"
+                                                                                                               ])
   end
 
   # GET /groups or /groups.json
@@ -12,8 +17,7 @@ class GroupsController < ApplicationController
     @groups = Group.all
   end
 
-  def findMembers
-    @member_groups = []
+  def find_members
     memberGroup = MemberGroup.all
     members = Member.all
     @groups.each do |group|
@@ -29,7 +33,8 @@ class GroupsController < ApplicationController
   # GET /groups/1 or /groups/1.json
   def show
     @groups = Group.all
-    findMembers
+    @member_groups = []
+    find_members
   end
 
   # GET /groups/new
@@ -48,13 +53,11 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     params[:members][:id].each do |member|
-      if !member.empty?
-        @group.member_groups.build(:member_id =>member)
-      end
+      @group.member_groups.build(member_id: member) unless member.empty?
     end
     respond_to do |format|
       if @group.save
-        format.html { redirect_to @group, notice: "Group was successfully created." }
+        format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -66,13 +69,11 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1 or /groups/1.json
   def update
     params[:members][:id].each do |member|
-      if !member.empty?
-        @group.member_groups.build(:member_id =>member)
-      end
+      @group.member_groups.build(member_id: member) unless member.empty?
     end
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to @group, notice: "Group was successfully updated." }
+        format.html { redirect_to @group, notice: 'Group was successfully updated.' }
         format.json { render :show, status: :ok, location: @group }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -83,23 +84,24 @@ class GroupsController < ApplicationController
 
   # DELETE /groups/1 or /groups/1.json
   def destroy
-    #@members = Member.all
+    # @members = Member.all
     MemberGroup.destroy_by(group_id: @group.id)
     @group.destroy
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: "Group was successfully destroyed." }
+      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_group
-      @group = Group.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def group_params
-      params.require(:group).permit(:title)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_group
+    @group = Group.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def group_params
+    params.require(:group).permit(:title)
+  end
 end

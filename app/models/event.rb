@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# event model
 class Event < ApplicationRecord
   validates :name, presence: true
   validates :location, presence: true

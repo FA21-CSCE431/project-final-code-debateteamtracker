@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# group model
 class Group < ApplicationRecord
-    validates :title, presence: true
-    has_many :member_groups
-    has_many :members, :through => :member_groups
+  validates :title, presence: true
+  has_many :member_groups
+  has_many :members, through: :member_groups
 end

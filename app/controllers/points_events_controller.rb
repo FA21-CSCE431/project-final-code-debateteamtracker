@@ -1,20 +1,23 @@
+# frozen_string_literal: true
+
+# PointsEventsController
 class PointsEventsController < ApplicationController
-  before_action :set_points_event, only: %i[ show edit update destroy ]
+  before_action :set_points_event, only: %i[show edit update destroy]
   before_action :authenticate_admin!
   before_action :authenticate_permission
 
   def authenticate_permission
-    redirect_to '/', alert: 'Not authorized. This email does not have admin permissions' unless Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"])
+    redirect_to '/', alert: 'Not authorized. This email does not have admin permissions' unless Member.exists?([
+                                                                                                                 'email LIKE ? AND priority = 3', "%#{current_admin.email}"
+                                                                                                               ])
   end
-  
+
   # GET /points_events or /points_events.json
   def index
     @points_events = PointsEvent.all
-    
   end
 
-  def findMembers
-    @points = []
+  def find_members
     participation = Participation.all
     members = Member.all
     @points_events.each do |pe|
@@ -26,10 +29,12 @@ class PointsEventsController < ApplicationController
       @points << m
     end
   end
+
   # GET /points_events/1 or /points_events/1.json
   def show
     @points_events = PointsEvent.all
-    findMembers
+    @points = []
+    find_members
   end
 
   # GET /points_events/new
@@ -53,33 +58,28 @@ class PointsEventsController < ApplicationController
 
     # if empty, then build collection again
     params[:members][:id].each do |member|
-      if !member.empty?
-        @points_event.participations.build(:member_id => member)
-
-      end
+      @points_event.participations.build(member_id: member) unless member.empty?
     end
 
     respond_to do |format|
       if @points_event.save
-        format.html { redirect_to @points_event, notice: "Points event was successfully created." }
+        format.html { redirect_to @points_event, notice: 'Points event was successfully created.' }
         format.json { render :show, status: :created, location: @points_event }
-        tabulate()
+        tabulate
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @points_event.errors, status: :unprocessable_entity }
       end
     end
-
   end
 
   # PATCH/PUT /points_events/1 or /points_events/1.json
   def update
-
     respond_to do |format|
       if @points_event.update(points_event_params)
-        format.html { redirect_to @points_event, notice: "Points event was successfully updated." }
+        format.html { redirect_to @points_event, notice: 'Points event was successfully updated.' }
         format.json { render :show, status: :ok, location: @points_event }
-        tabulate()
+        tabulate
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @points_event.errors, status: :unprocessable_entity }
@@ -92,51 +92,51 @@ class PointsEventsController < ApplicationController
     Participation.destroy_by(points_event_id: @points_event.id)
     @points_event.destroy
     respond_to do |format|
-      format.html { redirect_to points_events_url, notice: "Points event was successfully destroyed." }
+      format.html { redirect_to points_events_url, notice: 'Points event was successfully destroyed.' }
       format.json { head :no_content }
-      tabulate()
+      tabulate
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_points_event
-      @points_event = PointsEvent.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def points_event_params
-      params.require(:points_event).permit(:name, :value)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_points_event
+    @points_event = PointsEvent.find(params[:id])
+  end
 
-    def tabulate
-      @total_points_events = PointsEvent.all
-      @total_members = Member.all
-      @total_participations = Participation.all
+  # Only allow a list of trusted parameters through.
+  def points_event_params
+    params.require(:points_event).permit(:name, :value)
+  end
 
-      # Traverse through the list of members
-      @total_members.each do |member|
-        # Find participation id list where the points_event member id matches the member id in the member list
-        participation_ids = @total_participations.where(:member_id => member.id)
-        points_events_ids = []
-        
-        # Get list of events attended for one member
-        participation_ids.each do |p|
-          # Look through the participation ids for a specific member and find the points event id associated with that member id
-          temp = @total_points_events.where(:id => p.points_event_id)
-          if !temp.empty?
-            points_events_ids << temp # Append temp to the list of points event ids
-          end
+  def tabulate
+    @total_points_events = PointsEvent.all
+    @total_members = Member.all
+    @total_participations = Participation.all
+
+    # Traverse through the list of members
+    @total_members.each do |member|
+      # Find participation id list where the points_event member id matches the member id in the member list
+      participation_ids = @total_participations.where(member_id: member.id)
+      points_events_ids = []
+
+      # Get list of events attended for one member
+      participation_ids.each do |p|
+        # Look through the participation ids for a specific member
+        temp = @total_points_events.where(id: p.points_event_id)
+        unless temp.empty?
+          points_events_ids << temp # Append temp to the list of points event ids
         end
-      
-        sum = 0
-        # Calculate sum of member's points
-        points_events_ids.each do |p_event|
-          sum = sum + p_event[0].value
-        end
-
-        member.update_attribute(:points, sum)
       end
 
+      sum = 0
+      # Calculate sum of member's points
+      points_events_ids.each do |p_event|
+        sum += p_event[0].value
+      end
+
+      member.update_attribute(:points, sum)
     end
+  end
 end
