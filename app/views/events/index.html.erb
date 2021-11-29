@@ -1,7 +1,7 @@
 
 <div class="content-box events-bg">
   <% if !current_admin.nil?%>
-   <% if Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"]) %>
+   <% if Member.exists?(['email LIKE ? AND priority > 1', "%#{current_admin.email}"]) %>
       <%= link_to("Add New Event", new_event_path, :class => 'action new', :method => :get) %>
       <%= link_to("Delete All Events", delete_all_events_path, :class => 'action delete_all') %>
     <% end %>
@@ -25,7 +25,7 @@
 <% end %>
 
     <% if !current_admin.nil?%>
-     <% if Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"]) %>
+     <% if Member.exists?(['email LIKE ? AND priority > 1', "%#{current_admin.email}"]) %>
     <table class="listing" summary="Event list">
     <h2>Upcoming Events</h2>
       <tr class="header">
