@@ -1,6 +1,11 @@
 class HomepagesController < ApplicationController
   before_action :set_homepage, only: %i[ show edit update destroy ]
+  before_action :authenticate_permission
 
+  def authenticate_permission
+    redirect_to '/', alert: 'Not authorized. This email does not have admin permissions' unless Member.exists?(['email LIKE ? AND priority > 1', "%#{current_admin.email}"])
+  end
+  
   # GET /homepages or /homepages.json
   def index
     @homepages = Homepage.all

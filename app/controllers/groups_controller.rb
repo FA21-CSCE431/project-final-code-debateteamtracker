@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   before_action :authenticate_permission
 
   def authenticate_permission
-    redirect_to '/', alert: 'Not authorized. This email does not have admin permissions' unless Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"])
+    redirect_to '/', alert: 'Not authorized. This email does not have admin permissions' unless Member.exists?(['email LIKE ? AND priority > 1', "%#{current_admin.email}"])
   end
 
   # GET /groups or /groups.json
