@@ -12,7 +12,7 @@
       <tbody>
           <%@member_groups.each do |mg|%>
             <tr>
-              <td><%= @members.where(id: mg.member_id).name %></td>
+              <td><%= @members.find(mg.member_id).name %></td>
             </tr>
           <% end %>
       </tbody>
