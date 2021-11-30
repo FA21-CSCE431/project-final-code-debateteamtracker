@@ -31,6 +31,7 @@ class GroupsController < ApplicationController
     @groups = Group.all
     @member_groups = MemberGroup.where(group_id: params[:id])
     @members = Member.all
+    @this = Group.find(params[:id])
   end
 
   # GET /groups/new
