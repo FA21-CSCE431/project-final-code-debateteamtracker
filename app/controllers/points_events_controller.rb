@@ -17,18 +17,16 @@ class PointsEventsController < ApplicationController
     @points = []
     participation = Participation.all
     members = Member.all
-    @points_events.each do |pe|
-      temp = participation.where(points_event_id: pe.id)
-      m = []
-      temp.each do |t|
-        m << members.find(t.member_id)
-      end
-      @points << m
+    temp = participation.where(points_event_id: @points_event.id)
+    m = []
+    temp.each do |t|
+      m << members.find(t.member_id)
     end
+    @points << m
   end
   # GET /points_events/1 or /points_events/1.json
   def show
-    @points_events = PointsEvent.all
+    @points_event = PointsEvent.find(params[:id])
     findMembers
   end
 

@@ -8,7 +8,7 @@
 
   <div class="points-events-show">
     <h3>Participating Members</h3>
-    <%@points[@points_event.id - 1].each do |pe|%>
+    <%@points.each do |pe|%>
         <p><%= pe.name %></p>
     <% end %>
   </div>
@@ -18,10 +18,10 @@
 <%= link_to 'Back', points_events_path %>
 
           <tbody>
-              <%@points[@points_event.id - 1].each do |mg|%>
+              <%@points.each do |m|%>
                 <%if !mg.blank?%>
                 <tr>
-                  <td><%= mg.name %></td>
+                  <td><%= m.name %></td>
                 </tr>
                 <%end%>
               <% end %>
