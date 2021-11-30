@@ -2,11 +2,11 @@
 <div class="content-box events-bg">
   <% if !current_admin.nil?%>
     <% if Member.exists?(['email LIKE ? AND priority > 1', "%#{current_admin.email}"]) %>
-      <%= link_to("Add New Event", new_event_path, :class => 'action new', :method => :get), class: "back-button" do %>
-        <p><i class='fas fa-angle-double-left'></i> Back </p>
+      <%= link_to new_event_path, class: "back-button" do %>
+        <p><i class='fas fa-angle-double-left'></i> Add New Event </p>
       <% end %>
-      <%= link_to("Delete All Events", delete_all_events_path, :class => 'action delete_all'), class: "back-button" do %>
-        <p><i class='fas fa-angle-double-left'></i> Back </p>
+      <%= link_to delete_all_events_path, class: "back-button" do %>
+        <p><i class='fas fa-angle-double-left'></i> Delete All Events </p>
       <% end %>
     <% end %>
   <% end %>
@@ -15,7 +15,6 @@
 
      <%= month_calendar(events: @events) do |date, events| %>
       <%= date.day %>
-<% end %>
   <% events.each do |event| %>
     <div class="event_name">
       <%= event.name %>
