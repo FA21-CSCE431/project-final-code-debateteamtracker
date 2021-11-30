@@ -19,9 +19,11 @@
 
           <tbody>
               <%@points[@points_event.id - 1].each do |mg|%>
+                <%if !mg.empty?%>
                 <tr>
                   <td><%= mg.name %></td>
                 </tr>
+                <%end%>
               <% end %>
           </tbody>
         </table>
