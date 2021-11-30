@@ -11,7 +11,7 @@
 
       <tbody>
           <%@member_groups[@group.id - 1].each do |mg|%>
-            <%if !mg.empty?%>
+            <%if !mg.blank?%>
             <tr>
               <td><%= mg.name %></td>
             </tr>
