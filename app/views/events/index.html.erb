@@ -5,9 +5,7 @@
       <%= link_to new_event_path, class: "back-button" do %>
         <p><i class='fas fa-angle-double-left'></i> Add New Event </p>
       <% end %>
-      <%= link_to delete_all_events_path, class: "back-button" do %>
-        <p><i class='fas fa-angle-double-left'></i> Delete All Events </p>
-      <% end %>
+
     <% end %>
   <% end %>
   <div class="crud-body" style="background-color: rgba(256, 256, 256, 1);">
@@ -85,6 +83,11 @@
         </tr>
         <%end%>
       <% end %>
+      <%= link_to delete_all_events_path, class: "back-button" do %>
+        <p><i class='fas fa-angle-double-left'></i> Delete All Events </p>
+      <% end %>
+
+
       <% end %>
         <% end %>
 
