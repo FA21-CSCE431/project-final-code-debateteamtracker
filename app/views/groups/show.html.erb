@@ -10,10 +10,9 @@
       </thead>
 
       <tbody>
-          <%@member_groups[@group.id - 1].each do |mg|%>
-            <%if !mg.blank?%>
+          <%@member_groups.each do |mg|%>
             <tr>
-              <td><%= mg.name %></td>
+              <td><%= @members.find(mg.member_id).name %></td>
             </tr>
             <%end%>
           <% end %>

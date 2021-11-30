@@ -29,7 +29,8 @@ class GroupsController < ApplicationController
   # GET /groups/1 or /groups/1.json
   def show
     @groups = Group.all
-    findMembers
+    @member_groups = MemberGroup.where(group_id: params[:id])
+    @members = Member.all
   end
 
   # GET /groups/new
