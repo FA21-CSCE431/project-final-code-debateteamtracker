@@ -8,8 +8,8 @@
 
   <div class="points-events-show">
     <h3>Participating Members</h3>
-    <%@points.each do |pe|%>
-        <p><%= pe.name %></p>
+    <%@mems.each do |mem|%>
+        <p><%= mem.name %></p>
     <% end %>
   </div>
 
@@ -18,8 +18,8 @@
 <%= link_to 'Back', points_events_path %>
 
           <tbody>
-              <%@points.each do |m|%>
-                <%if !mg.blank?%>
+              <%@mems.each do |m|%>
+                <%if !m.blank?%>
                 <tr>
                   <td><%= m.name %></td>
                 </tr>
