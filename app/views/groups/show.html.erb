@@ -10,9 +10,9 @@
       </thead>
 
       <tbody>
-          <%@member_groups[@group.id - 1].each do |mg|%>
+          <%@member_groups.each do |mg|%>
             <tr>
-              <td><%= mg.name %></td>
+              <td><%= @members.where(id: mg.member_id).name %></td>
             </tr>
           <% end %>
       </tbody>
