@@ -1,23 +1,20 @@
 <div class="content-box groups-bg">
+  <%= link_to groups_path, class: "back-button" do %>
+    <p><i class='fas fa-angle-double-left'></i> Back </p>
+  <% end %>
   <div class="crud-body">
     <h1 class="crud-header"><%= @group.title %> </h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Members</th>
-          <th colspan="1"></th>
-        </tr>
-      </thead>
-
-      <tbody>
+    <div class="points-events-show">
+      <h3>Group Members</h3>
           <%@member_groups.each do |mg|%>
-            <tr>
-              <td><%= @members.find(mg.member_id).name %></td>
-            </tr>
+              <p><%= @members.find(mg.member_id).name %></p>
           <% end %>
-      </tbody>
-    </table>
-    <%= link_to 'Edit', edit_group_path(@group) %> |
-    <%= link_to 'Back', groups_path %>
-  </div> <!-- crud-body -->
-</div> <!-- content-box -->
+    </div>
+
+    <div class="crud-flex" style="margin-top: 40px">
+      <%= link_to 'Edit', edit_points_event_path(@points_event), class: "crud-button" %>
+    </div>
+    
+  </div>
+</div>
+
