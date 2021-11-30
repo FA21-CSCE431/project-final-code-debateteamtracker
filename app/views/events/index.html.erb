@@ -14,8 +14,8 @@
     <h1 class="crud-header">Calendar</h1>
 
      <%= month_calendar(events: @events) do |date, events| %>
-  <%= date.day %>
-
+      <%= date.day %>
+<% end %>
   <% events.each do |event| %>
     <div class="event_name">
       <%= event.name %>
