@@ -1,9 +1,13 @@
 
 <div class="content-box events-bg">
   <% if !current_admin.nil?%>
-   <% if Member.exists?(['email LIKE ? AND priority > 1', "%#{current_admin.email}"]) %>
-      <%= link_to("Add New Event", new_event_path, :class => 'action new', :method => :get) %>
-      <%= link_to("Delete All Events", delete_all_events_path, :class => 'action delete_all') %>
+    <% if Member.exists?(['email LIKE ? AND priority > 1', "%#{current_admin.email}"]) %>
+      <%= link_to("Add New Event", new_event_path, :class => 'action new', :method => :get), class: "back-button" do %>
+        <p><i class='fas fa-angle-double-left'></i> Back </p>
+      <% end %>
+      <%= link_to("Delete All Events", delete_all_events_path, :class => 'action delete_all'), class: "back-button" do %>
+        <p><i class='fas fa-angle-double-left'></i> Back </p>
+      <% end %>
     <% end %>
   <% end %>
   <div class="crud-body" style="background-color: rgba(256, 256, 256, 1);">
