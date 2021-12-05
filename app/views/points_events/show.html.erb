@@ -3,32 +3,18 @@
     <p><i class='fas fa-angle-double-left'></i> Back </p>
   <% end %>
   <div class="crud-body">
-  <h1 class="crud-header"><%= @points_event.name %> </h1>
-  <h3 class="crud-header">Value: <%= @points_event.value %> </h3>
+    <h1 class="crud-header"><%= @points_event.name %> </h1>
+    <h3 class="crud-header">Value: <%= @points_event.value %> </h3>
 
-  <div class="points-events-show">
-    <h3>Participating Members</h3>
-    <%@points[@points_event.id - 1].each do |pe|%>
-        <p><%= pe.name %></p>
-    <% end %>
-  </div>
+    <div class="points-events-show">
+      <h3>Participating Members</h3>
+      <%@mems.each do |mem|%>
+          <p><%= mem.name %></p>
+      <% end %>
+    </div>
 
-
-<%= link_to 'Edit', edit_points_event_path(@points_event) %> |
-<%= link_to 'Back', points_events_path %>
-
-          <tbody>
-              <%@points[@points_event.id - 1].each do |mg|%>
-                <tr>
-                  <td><%= mg.name %></td>
-                </tr>
-              <% end %>
-          </tbody>
-        </table>
-      </div>
-      <div class="crud-flex" style="margin-top: 40px">
-        <%= link_to 'Edit', edit_points_event_path(@points_event), class: "crud-button" %>
-      </div>
+    <div class="crud-flex" style="margin-top: 40px">
+      <%= link_to 'Edit', edit_points_event_path(@points_event), class: "crud-button" %>
     </div>
   </div>
 </div>

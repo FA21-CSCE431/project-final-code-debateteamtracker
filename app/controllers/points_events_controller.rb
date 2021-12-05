@@ -4,7 +4,7 @@ class PointsEventsController < ApplicationController
   before_action :authenticate_permission
 
   def authenticate_permission
-    redirect_to '/', alert: 'Not authorized. This email does not have admin permissions' unless Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"])
+    redirect_to '/', alert: 'Not authorized. This email does not have admin permissions' unless Member.exists?(['email LIKE ? AND priority > 1', "%#{current_admin.email}"])
   end
   
   # GET /points_events or /points_events.json
@@ -14,21 +14,17 @@ class PointsEventsController < ApplicationController
   end
 
   def findMembers
-    @points = []
+    @mems = []
     participation = Participation.all
     members = Member.all
-    @points_events.each do |pe|
-      temp = participation.where(points_event_id: pe.id)
-      m = []
-      temp.each do |t|
-        m << members.find(t.member_id)
-      end
-      @points << m
+    temp = participation.where(points_event_id: @points_event.id)
+    temp.each do |t|
+      @mems << members.find(t.member_id)
     end
   end
   # GET /points_events/1 or /points_events/1.json
   def show
-    @points_events = PointsEvent.all
+    @points_event = PointsEvent.find(params[:id])
     findMembers
   end
 

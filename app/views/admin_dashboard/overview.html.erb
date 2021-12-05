@@ -11,10 +11,12 @@
       </center>
 
       <tbody>
-          <tr>
-            <td><%= link_to 'Member Create', members_path, class:"crud-show" %></td>
-            <td>Add and edit Debate Team Members from this page</td>
-          </tr>
+          <% if Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"]) %>
+            <tr>
+              <td><%= link_to 'Member Create', members_path, class:"crud-show" %></td>
+              <td>Add and edit Debate Team Members from this page</td>
+            </tr>
+          <% end %>
           <tr>
             <td><%= link_to 'Announcement Create', announcements_path, class:"crud-show" %></td>
             <td>Create announcements to be sent through email from this page</td>

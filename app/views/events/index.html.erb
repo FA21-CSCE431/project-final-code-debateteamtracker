@@ -1,17 +1,18 @@
 
 <div class="content-box events-bg">
   <% if !current_admin.nil?%>
-   <% if Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"]) %>
-      <%= link_to("Add New Event", new_event_path, :class => 'action new', :method => :get) %>
-      <%= link_to("Delete All Events", delete_all_events_path, :class => 'action delete_all') %>
+    <% if Member.exists?(['email LIKE ? AND priority > 1', "%#{current_admin.email}"]) %>
+      <%= link_to new_event_path, class: "back-button" do %>
+        <p><i class='fas fa-angle-double-left'></i> Add New Event </p>
+      <% end %>
+
     <% end %>
   <% end %>
   <div class="crud-body" style="background-color: rgba(256, 256, 256, 1);">
     <h1 class="crud-header">Calendar</h1>
 
      <%= month_calendar(events: @events) do |date, events| %>
-  <%= date.day %>
-
+      <%= date.day %>
   <% events.each do |event| %>
     <div class="event_name">
       <%= event.name %>
@@ -25,7 +26,7 @@
 <% end %>
 
     <% if !current_admin.nil?%>
-     <% if Member.exists?(['email LIKE ? AND priority = 3', "%#{current_admin.email}"]) %>
+     <% if Member.exists?(['email LIKE ? AND priority > 1', "%#{current_admin.email}"]) %>
     <table class="listing" summary="Event list">
     <h2>Upcoming Events</h2>
       <tr class="header">
@@ -82,6 +83,11 @@
         </tr>
         <%end%>
       <% end %>
+      <%= link_to delete_all_events_path, class: "back-button" do %>
+        <p><i class='fas fa-angle-double-left'></i> Delete All Events </p>
+      <% end %>
+
+
       <% end %>
         <% end %>
 

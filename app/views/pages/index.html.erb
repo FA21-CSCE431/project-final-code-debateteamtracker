@@ -101,6 +101,7 @@
                       <div>
                         <h3 class="item-title"><%= event.name %></h3>
                         <p><%= event.description %></p>
+                        <p><%= event.start_time.strftime("%d of %B at %I:%M%p") %></p>
                       </div>
                     <% end %>
                 </div>
