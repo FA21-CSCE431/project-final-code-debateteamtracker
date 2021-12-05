@@ -9,7 +9,7 @@ class PagesController < ApplicationController
 
   def leaderboard
     # Show regular users and limit total to top 10
-    @members = Member.where(priority: 1).order(points: :desc).limit(10)
+    @members = Member.order(points: :desc).limit(10)
     @entries = []
     unless current_admin.nil?
       if Member.exists?(['email LIKE ? AND priority = 1', "%#{current_admin.email}"])
