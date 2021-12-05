@@ -5,7 +5,7 @@
     <h1 class="leaderboard-title">Leaderboard</h1>
 
     <% if !current_admin.nil?%>
-      <% if Member.exists?(['email LIKE ? AND priority = 1', "%#{current_admin.email}"]) %>
+      <% if Member.exists?(['email LIKE ?', "%#{current_admin.email}"]) %>
         <h3 class="leaderboard-title">Your Points</h3>
         <table class="pointsEarned">
           <thead>
