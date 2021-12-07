@@ -51,6 +51,13 @@ $debbg: #100200B2;
 
   .has-events:hover {
     background-color: skyblue;
+    display: block;
+    transition-duration: 0.5s;
+  }
+
+  .has-events:hover .preview{
+    display: block;
+    transition-duration: 0.5s;
   }
 
   .event_name {
@@ -60,10 +67,6 @@ $debbg: #100200B2;
   }
   .preview{
       display: none;
-  }
-
-  .event_name:hover + div {
-    display: block;
   }
 
 }
